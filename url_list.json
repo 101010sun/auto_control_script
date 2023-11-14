@@ -1,0 +1,15 @@
+{
+  "youtube_video_list": [
+    "https://www.youtube.com/watch?v=Q0W--O7aWBg",
+    "https://www.youtube.com/watch?v=BBmz-B5kSO8",
+    "https://www.youtube.com/watch?v=AkeeabfJjd8",
+    "https://www.youtube.com/watch?v=5e7qMOZvgwg",
+    "https://www.youtube.com/shorts/glKxzNh25bo",
+    "https://www.youtube.com/watch?v=WZyK_v6xa9o",
+    "https://www.youtube.com/watch?v=ow1tW7y-x28"
+  ],
+  "web_download_list": [
+    "https://nodejs.org/dist/v20.9.0/node-v20.9.0.tar.gz",
+    "https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz"
+  ]
+}
