@@ -11,6 +11,18 @@ class AndroidCellphoneController:
     def _clean_up(self):
         return
 
+
+    def enable_wifi(self):
+        os.system(f"adb shell svc wifi enable")
+        time.sleep(8)
+        return
+    
+
+    def disable_wifi(self):
+        os.system(f"adb shell svc wifi disable")
+        time.sleep(1)
+        return 
+
     def watch_predefined_youtube_videos(self, playTime: int):
         # 取得 predefined Youtube videos
         youtube_video_list = []
@@ -71,9 +83,15 @@ class AndroidCellphoneController:
         self._clean_up()
         return
     
+
+    def start_skype_call(self, playTime: int):
+        return
+    
+
     def upload_google_drive_file(self):
         return
 
 
     def download_google_drive_file(self):
         return
+    
