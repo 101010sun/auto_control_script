@@ -1,8 +1,6 @@
 from cellphone_controller_android import AndroidCellphoneController
 from dotenv import load_dotenv
 import os
-import random
-import json
 import time
 
 # 載入環境變數
