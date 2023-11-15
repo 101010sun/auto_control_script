@@ -1,11 +1,14 @@
-from cellphone_control_android import AndroidCellphoneController
+from cellphone_controller_samsungs20fe import SamSungS20FEController
 
+def samsungS20fe():
+    controller = SamSungS20FEController()
+    # controller.watch_predefined_youtube_videos(5)
+    # controller.download_web_file()
+    # controller.play_spotify_music(60)
+    # controller.join_google_meet(3)
 
 def main():
-    androidCellphoneController = AndroidCellphoneController()
-    # androidCellphoneController.watch_predefined_youtube_videos()
-    # androidCellphoneController.download_web_file()
-    # androidCellphoneController.play_spotify_music()
+    samsungS20fe()
 
 
 if __name__ == "__main__":
