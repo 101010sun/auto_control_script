@@ -11,7 +11,7 @@ class AndroidCellphoneController:
     def _clean_up(self):
         return
 
-    def watch_predefined_youtube_videos(self, playTime):
+    def watch_predefined_youtube_videos(self, playTime: int):
         # 取得 predefined Youtube videos
         youtube_video_list = []
         with open("url_list.json", "r") as f:
@@ -51,8 +51,29 @@ class AndroidCellphoneController:
 
     def join_google_meet(self):
         return
-        
 
+
+    def send_gmail(self):
+        return
     
 
+    def view_specific_webpages(self, playTime: int):
+        # 取得 predefined webpage url
+        web_webpage_list = []
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            web_webpage_list = file["web_webpage_list"]
+
+        # 隨機選擇瀏覽的網頁頁面
+        random_index = random.randint(0, len(web_webpage_list)-1)
+        os.system(f"adb shell am start {web_webpage_list[random_index]}")
+        time.sleep(playTime)
+        self._clean_up()
+        return
     
+    def upload_google_drive_file(self):
+        return
+
+
+    def download_google_drive_file(self):
+        return
