@@ -38,3 +38,65 @@ class SamSungS20FEController(AndroidCellphoneController):
         time.sleep(1)
         self._clean_up()
         return
+    
+
+    def send_gmail(self):
+        des = os.environ.get('GMAIL_DES')
+        subject = os.environ.get('GMAIL_SUBJECT')
+        body = os.environ.get('GMAIL_BODY')
+
+        os.system(f"adb shell am start -n com.google.android.gm/com.google.android.gm.ConversationListActivityGmail")
+        time.sleep(1)
+        os.system(f"adb shell input tap 766 2008") # 點擊撰寫
+        time.sleep(0.5)
+        os.system(f"adb shell input keyboard text '{des}'") # 輸入收件人
+        os.system(f"adb shell input keyevent 66") # enter
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 106 709") # 點擊主旨
+        os.system(f"adb shell input keyboard text '{subject}'") # 輸入主旨
+        os.system(f"adb shell input keyevent 66") # enter
+        time.sleep(0.5)
+        os.system(f"adb shell input keyboard text '{body}'") # 輸入內文
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 848 209") # 點擊傳送
+        time.sleep(0.5)
+        self._clean_up()
+        return
+        
+    
+    def view_specific_webpages(self, playTime: int):
+        return super().view_specific_webpages(playTime)
+    
+
+    def upload_google_drive_file(self):
+        os.system(f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
+        time.sleep(1)
+        os.system(f"adb shell input tap 947 1856") # 點擊 +
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 535 1706") # 點擊上傳
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 932 307") # 點擊文件
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 352 1035") # 點擊第一份文件
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 853 184") # 點擊選取
+        time.sleep(30) # 等待上傳
+        self._clean_up()
+        return
+
+
+    def download_google_drive_file(self):
+        os.system(f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
+        time.sleep(1)
+        os.system(f"adb shell input tap 946 2117") # 點擊檔案
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 350 723") # 點擊第一個資料夾
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 995 590") # 點擊第一個文件的選項
+        time.sleep(0.5)
+        os.system(f"adb shell input tap 300 2187")
+        time.sleep(30) # 等待下載
+        self._clean_up()
+        return
+        
+

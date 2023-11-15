@@ -11,5 +11,10 @@
   "web_download_list": [
     "https://nodejs.org/dist/v20.9.0/node-v20.9.0.tar.gz",
     "https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz"
+  ],
+  "web_webpage_list": [
+    "https://rhhwang.csie.io/",
+    "https://hsng.csie.io/",
+    "https://cs.ccu.edu.tw/"
   ]
 }
