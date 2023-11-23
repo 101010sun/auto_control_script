@@ -1,5 +1,7 @@
-from cellphone_controller_samsungs20fe import SamsungS20FEController
+from cellphone import SamsungS20FEController
+from computer import WindowsComputerController
 import random
+
 
 def samsungS20FE(scenario: int):
     controller = SamsungS20FEController()
@@ -28,12 +30,22 @@ def samsungS20FE(scenario: int):
     return
 
 
+def windowsPC():
+    controller = WindowsComputerController()
+    # controller.start_skype_call(5)
+    # controller.play_spotify_music(5)
+    # controller.watch_predefined_youtube_videos(5)
+    # controller.download_web_file()
+    controller.join_google_meet()
+
+
 def main():
-    scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
-    random_index = random.randint(0, len(scenario_list)-1)
-    value = scenario_list[random_index]
-    samsungS20FE(value)
-    scenario_list.remove(value)
+    # scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
+    # random_index = random.randint(0, len(scenario_list)-1)
+    # value = scenario_list[random_index]
+    # samsungS20FE(value)
+    # scenario_list.remove(value)
+    windowsPC()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,45 @@
+2023-11-21 22:21:34.881 computer_controller_windows.py[92] start_skype_call -> Find Control Timeout(10s): {ClassName: 'Skype', ControlType: WindowControl}
+2023-11-21 22:23:01.589 computer_controller_windows.py[92] start_skype_call -> Find Control Timeout(10s): {ClassName: 'Skype', ControlType: WindowControl}
+2023-11-21 22:39:23.045 computer_controller_windows.py[92] start_skype_call -> Find Control Timeout(10s): {ClassName: 'Skype', ControlType: WindowControl}
+2023-11-21 22:39:57.963 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {ClassName: 'Skype', ControlType: WindowControl}
+2023-11-22 13:28:46.683 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {ClassName: 'Skype', ControlType: WindowControl}
+2023-11-22 13:51:42.396 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {Name: '搜尋 Skype', ControlType: EditControl}
+2023-11-22 13:52:40.778 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {Name: '搜尋 Skype', ControlType: EditControl}
+2023-11-22 13:54:21.972 computer_controller_windows.py[93] start_skype_call -> 2023-11-22 13:54:37.153 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {Name: '人員、群組、訊息、網路', ControlType: TextControl}
+2023-11-22 13:55:29.376 computer_controller_windows.py[93] start_skype_call -> Find Control Timeout(10s): {Name: '人員、群組、訊息、網路', ControlType: TextControl}
+2023-11-22 16:03:55.479 computer_controller_windows.py[62] play_spotify_music -> Find Control Timeout(10s): {Name: '搜尋', ControlType: HyperlinkControl}
+2023-11-22 16:13:36.518 computer_controller_windows.py[62] play_spotify_music -> Find Control Timeout(10s): {Name: '搜尋', ControlType: HyperlinkControl}
+2023-11-22 16:17:23.735 computer_controller_windows.py[62] play_spotify_music -> Find Control Timeout(10s): {Name: '搜尋', ControlType: HyperlinkControl}
+2023-11-22 16:51:30.829 computer_controller_windows.py[67] play_spotify_music -> Find Control Timeout(10s): {Name: '播放 Lo Fi Hip-Hop Chillhop (Relaxing & Chill Vibes) Lofi Music LowFi Jazzhop & Low-Fi Beats', ControlType: ButtonControl}
+2023-11-22 17:08:36.186 computer_controller_windows.py[69] play_spotify_music -> Can not move cursor. ButtonControl's BoundingRectangle is (0,0,0,0)[0x0]. SearchProperties: {Name: '關閉', ControlType: ButtonControl}
+2023-11-22 20:43:31.328 computer_controller_windows.py[36] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:43:48.170 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '網址與搜尋列', ControlType: EditControl}
+2023-11-22 20:44:17.338 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '網址與搜尋列', ControlType: EditControl}
+2023-11-22 20:47:21.977 computer_controller_windows.py[36] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:47:40.129 computer_controller_windows.py[36] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:51:42.519 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:51:58.461 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:52:14.525 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 20:52:46.300 computer_controller_windows.py[37] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:10:02.311 computer_controller_windows.py[38] watch_predefined_youtube_videos -> Find Control Timeout(10s): {Name: '網址與搜尋列', ControlType: EditControl}
+2023-11-22 21:13:45.725 computer_controller_windows.py[51] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:14:07.306 computer_controller_windows.py[51] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:14:43.536 computer_controller_windows.py[51] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:24:52.834 computer_controller_windows.py[53] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:25:17.359 computer_controller_windows.py[59] download_web_file -> Find Control Timeout(10s): {Name: '存檔(S)', ControlType: ButtonControl}
+2023-11-22 21:27:12.201 computer_controller_windows.py[53] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:27:32.858 computer_controller_windows.py[59] download_web_file -> Find Control Timeout(10s): {Name: '存檔(S)', ControlType: ButtonControl}
+2023-11-22 21:33:29.529 computer_controller_windows.py[53] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:33:46.552 computer_controller_windows.py[53] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:34:52.878 computer_controller_windows.py[53] download_web_file -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:51:08.318 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:51:27.967 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:57:14.015 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 21:58:08.177 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:01:04.265 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:01:18.777 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:01:58.152 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:04:15.524 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:04:40.966 computer_controller_windows.py[92] join_google_meet -> Find Control Timeout(10s): {Name: '允許使用麥克風', ControlType: ButtonControl}
+2023-11-22 22:11:03.707 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
+2023-11-22 22:20:24.604 computer_controller_windows.py[87] join_google_meet -> Find Control Timeout(10s): {Name: '訪客模式', ControlType: ButtonControl}
