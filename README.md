@@ -4,6 +4,10 @@
 pip install python-dotenv pyautogui pywinauto uiautomation
 ```
 
+1. 安裝 python, git, vscode
+2. Chrome, Skype, Spotify
+
+
 ## ENVIROMENT
 
 - GOOGLE_MEET_ROOM
