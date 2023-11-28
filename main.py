@@ -38,7 +38,10 @@ def oppoReno7(scenario: int):
     # controller.play_spotify_music(10)
     # controller.join_google_meet(10)
     # controller.send_gmail()
-    controller.view_specific_webpages(5)
+    # controller.view_specific_webpages(5)
+    # controller.start_skype_call(5)
+    # controller.upload_google_drive_file()
+    controller.download_google_drive_file()
 
 
 def windowsPC():
