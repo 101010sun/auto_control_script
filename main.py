@@ -34,9 +34,12 @@ def windowsPC():
     controller = WindowsComputerController()
     # controller.start_skype_call(5)
     # controller.play_spotify_music(5)
-    # controller.watch_predefined_youtube_videos(5)
+    # controller.watch_predefined_youtube_videos(10)
     # controller.download_web_file()
-    controller.join_google_meet()
+    # controller.join_google_meet()
+    # controller.send_gmail()
+    # controller.view_specific_webpages(5)
+    controller.start_skype_call(5)
 
 
 def main():

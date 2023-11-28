@@ -1,3 +1,5 @@
+from pydoc import classname
+from re import search
 from dotenv import load_dotenv
 import uiautomation as auto
 import os
@@ -34,12 +36,13 @@ class WindowsComputerController:
         random_index = random.randint(0, len(youtube_video_list)-1)
         
         subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
-        smallWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
-        smallWindow.ButtonControl(searchDepth=6, Name="訪客模式").Click()
+        time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(youtube_video_list[random_index] + '{Enter}')
+        time.sleep(2)
+        chromeWindow.SendKeys('{Space}')
         time.sleep(playTime)
-        chromeWindow.SendKeys('{ALT}{F4}')
+        self._clean_up(chromeWindow)
         return
 
 
@@ -54,16 +57,17 @@ class WindowsComputerController:
         random_index = random.randint(0, len(web_download_list)-1)
         
         subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
-        smallWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
-        smallWindow.ButtonControl(searchDepth=6, Name="訪客模式").Click()
-
+        time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(web_download_list[random_index] + '{Enter}')
-        
-        saveFileWindow = auto.WindowControl(searchDepth=2, Name="另存新檔")
-        saveFileWindow.ButtonControl(searchDepth=2, Name="存檔(S)").Click()
-        time.sleep(20)
-        chromeWindow.SendKeys('{ALT}{F4}')
+        try:
+            saveFileWindow = auto.WindowControl(searchDepth=2, Name="另存新檔")
+            saveFileWindow.ButtonControl(searchDepth=2, Name="存檔(S)").Click()
+        except LookupError:
+            print('no save windows.')
+
+        time.sleep(20) # 等待下載
+        self._clean_up(chromeWindow)
         return
     
 
@@ -71,6 +75,7 @@ class WindowsComputerController:
         playlistName = os.environ.get("SPOTIFY_PLAYLIST_NAME")  # 播放清單名稱
         
         subprocess.Popen('Spotify.exe') # 執行 Spotify
+        time.sleep(2)
         spotifyWindow = auto.PaneControl(searchDepth=1, ClassName='Chrome_WidgetWin_0') # 連接 Spotify 視窗
         spotifyWindow.HyperlinkControl(searchDepth=11, Name='搜尋').Click()
         spotifyWindow.EditControl(searchDepth=12, Name='想聽什麼？').SendKeys(playlistName)
@@ -80,29 +85,57 @@ class WindowsComputerController:
         time.sleep(playTime)
         playButton.Click() # 停止
         spotifyWindow.HyperlinkControl(searchDepth=11, Name='搜尋').Click()
-        spotifyWindow.SendKeys('{ALT}{F4}')
+        self._clean_up(spotifyWindow)
         return
     
 
     def join_google_meet(self):
         googleMeetUrl = os.environ.get("GOOGLE_MEET_URL")
         googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
-        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
-        smallWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
-        smallWindow.ButtonControl(searchDepth=6, Name="訪客模式").Click()
 
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(googleMeetUrl + '{Enter}')
-        chromeWindow.EditControl(searchDepth=6, Name='Enter meeting code').SendKeys(googleMeetRoom + '{Enter}')
-        chromeWindow.ButtonControl(searchDepth=10, Name="允許使用麥克風").Click()
-        chromeWindow.ButtonControl(searchDepth=7, Name='允許').Click()
-        chromeWindow.EditControl(searchDepth=13, Name='你的名稱').SendKeys('Test')
-        chromeWindow.ButtonControl(searchDepth=12, Name='要求加入').Click()
+        chromeWindow.EditControl(searchDepth=10, Name='輸入代碼或暱稱').SendKeys(googleMeetRoom + '{Enter}')
+        time.sleep(5)
+        # # 開啟開啟權限
+        # try:
+        #     chromeWindow.ButtonControl(searchDepth=10, Name="允許使用麥克風和攝影機").Click()
+        #     chromeWindow.ButtonControl(searchDepth=7, Name='允許').Click()
+        # except LookupError:
+        #     print('permission had been accepted.')
 
+        chromeWindow.ButtonControl(searchDepth=13, Name='立即加入').Click()
+        time.sleep(20)
+        chromeWindow.ButtonControl(searchDepth=11, Name='退出通話').Click()
+        self._clean_up(chromeWindow)
         return
 
 
     def send_gmail(self):
+        gmailDes = os.environ.get("GMAIL_DES")
+        gmailSubject = os.environ.get("GMAIL_SUBJECT")
+        gmailBody = os.environ.get("GMAIL_BODY")
+        newMail = "?compose=new"
+
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
+        chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
+        chromeWindow.TextControl(searchDepth=13, Name="Gmail").Click() # 進入 gmail
+        time.sleep(2) # 等待 init
+        search = chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列")
+        search.Click()
+        search.SendKeys('{End}')
+        search.SendKeys(newMail)
+        search.SendKeys('{Enter}') # 新增郵件
+        time.sleep(2)
+        chromeWindow.ComboBoxControl(searchDepth=17, Name='').SendKeys(gmailDes)
+        chromeWindow.EditControl(searchDepth=10, Name="主旨").SendKeys(gmailSubject)
+        chromeWindow.EditControl(searchDepth=20, Name='郵件內文').SendKeys(gmailBody)
+        chromeWindow.ButtonControl(searchDepth=16, Name="傳送 \u202a(Ctrl-Enter)\u202c").Click()
+        time.sleep(3) # 傳送郵件
+        self._clean_up(chromeWindow)
         return
     
 
@@ -115,17 +148,32 @@ class WindowsComputerController:
 
         # 隨機選擇瀏覽的網頁頁面
         random_index = random.randint(0, len(web_webpage_list)-1)
-        os.system(f"adb shell am start {web_webpage_list[random_index]}")
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
+        chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
+        chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(web_webpage_list[random_index] + '{Enter}')
+        time.sleep(2) # 網頁 loading
         time.sleep(playTime)
+        self._clean_up(chromeWindow)
         return
     
 
     def start_skype_call(self, playTime: int):
-        subprocess.Popen('Skype.exe')
-        skypeWindow = auto.WindowControl(searchDepth=1, Name='Skype')
-        text = skypeWindow.TextControl(searchDepth=0, Name='人員、群組、訊息、網路')
-        print(text)
-        text.Click()
+        skypeLink = os.environ.get("SKYPE_LINK")
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
+        chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
+        chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(skypeLink + '{Enter}')
+        time.sleep(5)
+        chromeWindow.ButtonControl(searchDepth=7, Name="開啟「Skype」").Click()
+        time.sleep(2)
+
+        # subprocess.Popen('Skype.exe')
+        # time.sleep(2)
+        # skypeWindow = auto.PaneControl(searchDepth=1, Name='Skype', ClassName="Chrome_WidgetWin_1")
+        # text = skypeWindow.TextControl(searchDepth=0, Name='人員、群組、訊息、網路')
+        # print(text)
+        # text.Click()
         # searchSkype = skypeWindow.EditControl(searchDepth=0, Name='搜尋 Skype')
         # searchSkype.SendKeys('wpa3_testing')
         return
