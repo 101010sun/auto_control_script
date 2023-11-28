@@ -1,5 +1,6 @@
-from cellphone import SamsungS20FEController
+from cellphone import SamsungS20FEController, OppoReno7Controller
 from computer import WindowsComputerController
+from logger import Logger
 import random
 
 
@@ -30,6 +31,19 @@ def samsungS20FE(scenario: int):
     return
 
 
+def oppoReno7(scenario: int):
+    controller = OppoReno7Controller()
+    # controller.watch_predefined_youtube_videos(5)
+    # controller.download_web_file()
+    # controller.play_spotify_music(10)
+    # controller.join_google_meet(10)
+    # controller.send_gmail()
+    # controller.view_specific_webpages(5)
+    # controller.start_skype_call(5)
+    # controller.upload_google_drive_file()
+    controller.download_google_drive_file()
+
+
 def windowsPC():
     controller = WindowsComputerController()
     # controller.start_skype_call(5)
@@ -48,8 +62,10 @@ def main():
     # value = scenario_list[random_index]
     # samsungS20FE(value)
     # scenario_list.remove(value)
-    windowsPC()
+    # windowsPC()
+    oppoReno7(0)
 
 
 if __name__ == "__main__":
+    logger = Logger('WPA3DataSet', 'main')
     main()

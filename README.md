@@ -1,12 +1,16 @@
 ## Preparies
 
 ```
-pip install python-dotenv pyautogui pywinauto uiautomation
+pip install python-dotenv pyautogui pywinauto uiautomation logging
 ```
 
+computer:
 1. 安裝 python, git, vscode
 2. Chrome, Skype, Spotify
 
+cellphone:
+1. 安裝 Skype, Chrome, Spotify, 雲端硬碟, Gmail
+2. 開發者模式 關閉手機休眠
 
 ## ENVIROMENT
 
