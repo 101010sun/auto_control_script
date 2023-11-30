@@ -11,7 +11,7 @@ import subprocess
 # 載入環境變數
 load_dotenv()
 
-class WindowsComputerController:
+class AsusA550VController:
     def _clean_up(self, windows: auto.PaneControl or auto.WindowControl):
         windows.SendKeys('{ALT}{F4}')
         return

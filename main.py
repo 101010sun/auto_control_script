@@ -8,24 +8,24 @@ def samsungS20FE(scenario: int):
     controller = SamsungS20FEController()
     controller.enable_wifi()
 
-    # if scenario == 1:
-    #     controller.watch_predefined_youtube_videos(5)
-    # elif scenario == 2:
-    #     controller.download_web_file()
-    # elif scenario == 3:
-    #     controller.play_spotify_music(60)
-    # elif scenario == 4:
-    #     controller.join_google_meet(3)
-    # elif scenario == 5:
-    #     controller.send_gmail()
-    # elif scenario == 6:
-    #     controller.view_specific_webpages(5)
-    # elif scenario == 7:
-    #     controller.upload_google_drive_file()
-    # elif scenario == 8:
-    #     controller.download_google_drive_file()
-    # elif scenario == 9:
-    #     controller.start_skype_call(30)
+    if scenario == 1:
+        controller.watch_predefined_youtube_videos(5)
+    elif scenario == 2:
+        controller.download_web_file()
+    elif scenario == 3:
+        controller.play_spotify_music(60)
+    elif scenario == 4:
+        controller.join_google_meet(3)
+    elif scenario == 5:
+        controller.send_gmail()
+    elif scenario == 6:
+        controller.view_specific_webpages(5)
+    elif scenario == 7:
+        controller.upload_google_drive_file()
+    elif scenario == 8:
+        controller.download_google_drive_file()
+    elif scenario == 9:
+        controller.start_skype_call(30)
 
     controller.disable_wifi()
     return
@@ -33,37 +33,77 @@ def samsungS20FE(scenario: int):
 
 def oppoReno7(scenario: int):
     controller = OppoReno7Controller()
-    # controller.watch_predefined_youtube_videos(5)
-    # controller.download_web_file()
-    # controller.play_spotify_music(10)
-    # controller.join_google_meet(10)
-    # controller.send_gmail()
-    # controller.view_specific_webpages(5)
-    # controller.start_skype_call(5)
-    # controller.upload_google_drive_file()
-    controller.download_google_drive_file()
+    controller.enable_wifi()
+
+    if scenario == 1:
+        controller.watch_predefined_youtube_videos(5)
+    elif scenario == 2:
+        controller.download_web_file()
+    elif scenario == 3:
+        controller.play_spotify_music(10)
+    elif scenario == 4:
+        controller.join_google_meet(10)
+    elif scenario == 5:
+        controller.send_gmail()
+    elif scenario == 6:
+        controller.view_specific_webpages(5)
+    elif scenario == 7:
+        controller.upload_google_drive_file()
+    elif scenario == 8:
+        controller.download_google_drive_file()
+    elif scenario == 9:
+        controller.start_skype_call(30)
+    
+    controller.disable_wifi()
+    return
 
 
-def windowsPC():
+def windowsPC(scenario: int):
     controller = WindowsComputerController()
-    # controller.start_skype_call(5)
-    # controller.play_spotify_music(5)
-    # controller.watch_predefined_youtube_videos(10)
-    # controller.download_web_file()
-    # controller.join_google_meet()
-    # controller.send_gmail()
-    # controller.view_specific_webpages(5)
-    controller.start_skype_call(5)
+    controller.enable_wifi()
+
+    if scenario == 1:
+        controller.watch_predefined_youtube_videos(10)
+    elif scenario == 2:
+        controller.download_web_file()
+    elif scenario == 3:
+        controller.play_spotify_music(5)
+    elif scenario == 4:
+        controller.join_google_meet()
+    elif scenario == 5:
+        controller.send_gmail()
+    elif scenario == 6:
+        controller.view_specific_webpages(5)
+    elif scenario == 7:
+        controller.upload_google_drive_file()
+    elif scenario == 8:
+        controller.download_google_drive_file()
+    elif scenario == 9:
+        controller.start_skype_call(5)
+    
+    controller.disable_wifi()
+    return
 
 
 def main():
-    # scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
-    # random_index = random.randint(0, len(scenario_list)-1)
-    # value = scenario_list[random_index]
-    # samsungS20FE(value)
-    # scenario_list.remove(value)
-    # windowsPC()
-    oppoReno7(0)
+    scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
+    
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    samsungS20FE(value)
+    scenario_list.remove(value)
+    
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    oppoReno7(value)
+    scenario_list.remove(value)
+    
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    windowsPC(value)
+    scenario_list.remove(value)
+
+    
 
 
 if __name__ == "__main__":

@@ -12,6 +12,7 @@ class ComputerControllerServer:
             s.connect(())
         return 0
 
+
     # 監聽 func.
     def wait_for_socket_connection(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -22,7 +23,10 @@ class ComputerControllerServer:
                 client_handler = threading.Thread(target=self.receive_socket_message, args=(s, conn, address)) # 處理收到的請求
                 client_handler.start()
 
+
     # 處理請求 func.
     def receive_socket_message(self, s, connection ,address):
         with connection:
             return 0
+        
+        
