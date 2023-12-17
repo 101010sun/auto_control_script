@@ -1,5 +1,5 @@
 from cellphone import SamsungS20FEController, OppoReno7Controller
-from computer import WindowsComputerController
+from computer import AcerT9300Controller
 from logger import Logger
 import random
 
@@ -59,7 +59,7 @@ def oppoReno7(scenario: int):
 
 
 def windowsPC(scenario: int):
-    controller = WindowsComputerController()
+    controller = AcerT9300Controller()
     controller.enable_wifi()
 
     if scenario == 1:
@@ -86,22 +86,23 @@ def windowsPC(scenario: int):
 
 
 def main():
-    scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
+    # scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
     
-    random_index = random.randint(0, len(scenario_list)-1)
-    value = scenario_list[random_index]
-    samsungS20FE(value)
-    scenario_list.remove(value)
+    # random_index = random.randint(0, len(scenario_list)-1)
+    # value = scenario_list[random_index]
+    # samsungS20FE(value)
+    # scenario_list.remove(value)
     
-    random_index = random.randint(0, len(scenario_list)-1)
-    value = scenario_list[random_index]
-    oppoReno7(value)
-    scenario_list.remove(value)
+    # random_index = random.randint(0, len(scenario_list)-1)
+    # value = scenario_list[random_index]
+    # oppoReno7(value)
+    # scenario_list.remove(value)
     
-    random_index = random.randint(0, len(scenario_list)-1)
-    value = scenario_list[random_index]
-    windowsPC(value)
-    scenario_list.remove(value)
+    # random_index = random.randint(0, len(scenario_list)-1)
+    # value = scenario_list[random_index]
+    # windowsPC(value)
+    # scenario_list.remove(value)
+    windowsPC(7)
 
     
 

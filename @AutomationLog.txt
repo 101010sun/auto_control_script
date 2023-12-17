@@ -69,3 +69,6 @@
 2023-11-23 21:35:32.040 computer_controller_windows.py[99] join_google_meet -> Find Control Timeout(10s): {Name: 'Enter meeting code', ControlType: EditControl}
 2023-11-23 21:37:42.822 computer_controller_windows.py[108] join_google_meet -> Find Control Timeout(10s): {Name: '你的名稱', ControlType: EditControl}
 2023-11-23 22:40:31.815 computer_controller_windows.py[168] start_skype_call -> Find Control Timeout(10s): {Name: '開啟「Skype」', ControlType: ButtonControl}
+2023-12-17 20:36:24.189 computer_controller_acert9300.py[65] download_web_file -> 2023-12-17 20:37:17.595 computer_controller_acert9300.py[65] download_web_file -> Find Control Timeout(10s): {Name: '存檔(S)', ControlType: ButtonControl}
+2023-12-17 20:42:22.796 computer_controller_acert9300.py[102] join_google_meet -> Find Control Timeout(10s): {Name: '輸入代碼或暱稱', ControlType: EditControl}
+2023-12-17 21:16:13.117 computer_controller_acert9300.py[189] upload_google_drive_file -> Find Control Timeout(10s): {Name: '新增', ControlType: MenuItemControl}

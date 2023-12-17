@@ -60,13 +60,15 @@ class AcerT9300Controller:
         time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(web_download_list[random_index] + '{Enter}')
-        try:
-            saveFileWindow = auto.WindowControl(searchDepth=2, Name="另存新檔")
-            saveFileWindow.ButtonControl(searchDepth=2, Name="存檔(S)").Click()
-        except LookupError:
-            print('no save windows.')
+        
+        # # 不會跳另存新檔
+        # try:
+        #     saveFileWindow = auto.WindowControl(searchDepth=2, Name="另存新檔")
+        #     saveFileWindow.ButtonControl(searchDepth=2, Name="存檔(S)").Click()
+        # except LookupError:
+        #     print('no save windows.')
 
-        time.sleep(20) # 等待下載
+        time.sleep(25) # 等待下載
         self._clean_up(chromeWindow)
         return
     
@@ -90,7 +92,10 @@ class AcerT9300Controller:
     
 
     def join_google_meet(self):
-        googleMeetUrl = os.environ.get("GOOGLE_MEET_URL")
+
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            googleMeetUrl = file["google_meet_url"]
         googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
 
         subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
@@ -99,7 +104,8 @@ class AcerT9300Controller:
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(googleMeetUrl + '{Enter}')
         chromeWindow.EditControl(searchDepth=10, Name='輸入代碼或暱稱').SendKeys(googleMeetRoom + '{Enter}')
         time.sleep(5)
-        # # 開啟開啟權限
+
+        # # 開啟開啟權限，開過一次之後就不用再允許了
         # try:
         #     chromeWindow.ButtonControl(searchDepth=10, Name="允許使用麥克風和攝影機").Click()
         #     chromeWindow.ButtonControl(searchDepth=7, Name='允許').Click()
@@ -159,7 +165,10 @@ class AcerT9300Controller:
     
 
     def start_skype_call(self, playTime: int):
-        skypeLink = os.environ.get("SKYPE_LINK")
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            skypeLink = file["skype_url"]
+
         subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
         time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
@@ -180,6 +189,22 @@ class AcerT9300Controller:
     
 
     def upload_google_drive_file(self):
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            google_drive_url = file["google_drive_url"]
+
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
+        chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
+        chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(google_drive_url + '{Enter}')
+        time.sleep(1)
+        chromeWindow.MenuItemControl(searchDepth=6, Name="新增").Click() # 點選新增
+        chromeWindow.MenuItemControl(searchDepth=5, Name="檔案上傳").Click() # 點選檔案上傳
+        time.sleep(1)
+        chromeWindow.ListItemControl(searchDepth=8, Name=f"{os.environ.get('GOOGLE_DRIVE_FILE')}").Click() # 點選文件
+        chromeWindow.ButtonControl(searchDepth=3, Name="開啟(O)").Click() # 開啟
+        time.sleep(10)
+        self._clean_up(chromeWindow)
         return
 
 
