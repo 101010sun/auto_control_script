@@ -72,3 +72,10 @@
 2023-12-17 20:36:24.189 computer_controller_acert9300.py[65] download_web_file -> 2023-12-17 20:37:17.595 computer_controller_acert9300.py[65] download_web_file -> Find Control Timeout(10s): {Name: '存檔(S)', ControlType: ButtonControl}
 2023-12-17 20:42:22.796 computer_controller_acert9300.py[102] join_google_meet -> Find Control Timeout(10s): {Name: '輸入代碼或暱稱', ControlType: EditControl}
 2023-12-17 21:16:13.117 computer_controller_acert9300.py[189] upload_google_drive_file -> Find Control Timeout(10s): {Name: '新增', ControlType: MenuItemControl}
+2023-12-18 18:44:20.193 computer_controller_windows.py[220] download_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: TextControl}
+2023-12-18 18:47:30.394 computer_controller_windows.py[220] download_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: GroupControl}
+2023-12-18 18:49:33.824 computer_controller_windows.py[220] download_google_drive_file -> Find Control Timeout(10s): {Name: 'Word：主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: GroupControl}
+2023-12-18 18:56:01.554 computer_controller_windows.py[220] download_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: TextControl}
+2023-12-18 19:29:41.380 computer_controller_acert9300.py[66] start_skype_call -> Find Control Timeout(10s): {Name: '開啟「Skype」', ControlType: ButtonControl}
+2023-12-18 19:41:00.992 computer_controller_acert9300.py[73] start_skype_call -> Find Control Timeout(10s): {Name: '開始通話', ControlType: ButtonControl}
+2023-12-18 19:42:59.201 computer_controller_acert9300.py[73] start_skype_call -> Find Control Timeout(10s): {Name: '開始通話', ControlType: ButtonControl}
