@@ -1,11 +1,10 @@
 from dotenv import load_dotenv
 from computer.computer_controller_windows import WindowsController
 import uiautomation as auto
-import os
-import random
-import json
-import time
+import pyautogui
 import subprocess
+import time
+import json
 
 # 載入環境變數
 load_dotenv()
@@ -16,11 +15,21 @@ class AsusA550VController(WindowsController):
     
 
     def enable_wifi(self):
+        pyautogui.click(1182, 742, clicks=1) # 點選網路圖標
+        time.sleep(2)
+        pyautogui.click(1051, 699, clicks=1) # 點選 wifi
+        time.sleep(5)
+        pyautogui.click(1182, 742, clicks=1) # 收起網路清單
         return
     
 
     def disable_wifi(self):
-        return 
+        pyautogui.click(1182, 742, clicks=1) # 點選網路圖標
+        time.sleep(2)
+        pyautogui.click(1051, 699, clicks=1) # 點選 wifi
+        time.sleep(5)
+        pyautogui.click(1182, 742, clicks=1) # 收起網路清單
+        return
 
 
     def watch_predefined_youtube_videos(self, playTime: int):
@@ -48,7 +57,32 @@ class AsusA550VController(WindowsController):
     
 
     def start_skype_call(self, playTime: int, joinName: str):
-        return super().start_skype_call(playTime, joinName)
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            skypeLink = file["skype_url"]
+
+        subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe') # 執行 Chrome
+        time.sleep(2)
+        chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
+        chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(skypeLink + '{Enter}')
+        time.sleep(5)
+        chromeWindow.ButtonControl(searchDepth=7, Name="取消").Click()
+        chromeWindow.ButtonControl(searchDepth=8, Name="以來賓身分加入").Click()
+        time.sleep(7)
+        chromeWindow.EditControl(searchDepth=11, Name="輸入您的名稱").SendKeys(joinName)
+        time.sleep(1)
+
+        pyautogui.moveTo(691, 445, duration=0.5)# 滑鼠移到中間
+        pyautogui.scroll(-100)# 滾輪往下滑
+
+        if chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Exists():
+            chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Click()
+        else:
+            chromeWindow.ButtonControl(searchDepth=11, Name="加入通話").Click()
+
+        time.sleep(2)
+        time.sleep(playTime)
+        self._clean_up(chromeWindow)
         return
     
 

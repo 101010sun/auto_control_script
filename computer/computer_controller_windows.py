@@ -1,4 +1,3 @@
-from ast import Name
 from dotenv import load_dotenv
 import uiautomation as auto
 import os
@@ -60,15 +59,12 @@ class WindowsController:
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(web_download_list[random_index] + '{Enter}')
         
-        # # 不會跳另存新檔
-        # try:
-        #     saveFileWindow = auto.WindowControl(searchDepth=2, Name="另存新檔")
-        #     saveFileWindow.ButtonControl(searchDepth=2, Name="存檔(S)").Click()
-        # except LookupError:
-        #     print('no save windows.')
-
         time.sleep(25) # 等待下載
         self._clean_up(chromeWindow)
+
+        if chromeWindow.ButtonControl(searchDepth=7, Name="結束").Exists():
+            chromeWindow.ButtonControl(searchDepth=7, Name="結束").Click()
+        
         return
     
 
@@ -102,7 +98,7 @@ class WindowsController:
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(googleMeetUrl + '{Enter}')
         chromeWindow.EditControl(searchDepth=10, Name='輸入代碼或暱稱').SendKeys(googleMeetRoom + '{Enter}')
-        time.sleep(5)
+        time.sleep(7)
 
         chromeWindow.ButtonControl(searchDepth=13, Name='立即加入').Click()
         time.sleep(20)
@@ -121,7 +117,7 @@ class WindowsController:
         time.sleep(2)
         chromeWindow = auto.PaneControl(searchDepth=1, ClassName="Chrome_WidgetWin_1")
         chromeWindow.TextControl(searchDepth=13, Name="Gmail").Click() # 進入 gmail
-        time.sleep(2) # 等待 init
+        time.sleep(5) # 等待 init
         search = chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列")
         search.Click()
         search.SendKeys('{End}')
@@ -132,7 +128,7 @@ class WindowsController:
         chromeWindow.EditControl(searchDepth=10, Name="主旨").SendKeys(gmailSubject)
         chromeWindow.EditControl(searchDepth=20, Name='郵件內文').SendKeys(gmailBody)
         chromeWindow.ButtonControl(searchDepth=16, Name="傳送 \u202a(Ctrl-Enter)\u202c").Click()
-        time.sleep(3) # 傳送郵件
+        time.sleep(5) # 傳送郵件
         self._clean_up(chromeWindow)
         return
     
@@ -196,7 +192,7 @@ class WindowsController:
         chromeWindow.MenuItemControl(searchDepth=6, Name="新增").Click() # 點選新增
         chromeWindow.MenuItemControl(searchDepth=5, Name="檔案上傳").Click() # 點選檔案上傳
         time.sleep(1)
-        chromeWindow.ListItemControl(searchDepth=8, Name=f"{os.environ.get('GOOGLE_DRIVE_FILE')}").Click() # 點選文件
+        chromeWindow.ListItemControl(searchDepth=8, Name=f"{os.environ.get('GOOGLE_DRIVE_FILE')}.docx").Click() # 點選文件
         chromeWindow.ButtonControl(searchDepth=3, Name="開啟(O)").Click() # 開啟
         time.sleep(10)
         self._clean_up(chromeWindow)

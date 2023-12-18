@@ -1,5 +1,6 @@
 from cellphone import SamsungS20FEController, OppoReno7Controller
 from computer import AcerT9300Controller
+from computer.computer_controller_asusa550v import AsusA550VController
 from logger import Logger
 import random
 
@@ -85,6 +86,33 @@ def acerT9300(scenario: int):
     return
 
 
+def asusA550v(scenario: int):
+    controller = AsusA550VController()
+    # controller.enable_wifi()
+
+    if scenario == 1:
+        controller.watch_predefined_youtube_videos(10)
+    elif scenario == 2:
+        controller.download_web_file()
+    elif scenario == 3:
+        controller.play_spotify_music(5)
+    elif scenario == 4:
+        controller.join_google_meet()
+    elif scenario == 5:
+        controller.send_gmail()
+    elif scenario == 6:
+        controller.view_specific_webpages(5)
+    elif scenario == 7:
+        controller.upload_google_drive_file()
+    elif scenario == 8:
+        controller.download_google_drive_file()
+    elif scenario == 9:
+        controller.start_skype_call(5, 'asusA550v_tester')
+    
+    # controller.disable_wifi()
+    return
+
+
 def main():
     scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
     
@@ -98,9 +126,14 @@ def main():
     # oppoReno7(value)
     # scenario_list.remove(value)
     
+    # random_index = random.randint(0, len(scenario_list)-1)
+    # value = scenario_list[random_index]
+    # acerT9300(value)
+    # scenario_list.remove(value)
+
     random_index = random.randint(0, len(scenario_list)-1)
     value = scenario_list[random_index]
-    acerT9300(value)
+    asusA550v(value)
     scenario_list.remove(value)
 
 

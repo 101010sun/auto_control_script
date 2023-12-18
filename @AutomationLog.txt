@@ -79,3 +79,15 @@
 2023-12-18 19:29:41.380 computer_controller_acert9300.py[66] start_skype_call -> Find Control Timeout(10s): {Name: '開啟「Skype」', ControlType: ButtonControl}
 2023-12-18 19:41:00.992 computer_controller_acert9300.py[73] start_skype_call -> Find Control Timeout(10s): {Name: '開始通話', ControlType: ButtonControl}
 2023-12-18 19:42:59.201 computer_controller_acert9300.py[73] start_skype_call -> Find Control Timeout(10s): {Name: '開始通話', ControlType: ButtonControl}
+2023-12-18 21:20:41.223 computer_controller_windows.py[77] play_spotify_music -> Find Control Timeout(10s): {Name: '搜尋', ControlType: HyperlinkControl}
+2023-12-18 21:23:59.462 computer_controller_windows.py[100] join_google_meet -> Find Control Timeout(10s): {Name: '輸入代碼或暱稱', ControlType: EditControl}
+2023-12-18 21:24:54.377 computer_controller_windows.py[103] join_google_meet -> Find Control Timeout(10s): {Name: '立即加入', ControlType: ButtonControl}
+2023-12-18 21:33:07.820 computer_controller_windows.py[195] upload_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: ListItemControl}
+2023-12-18 21:35:17.242 computer_controller_windows.py[195] upload_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: ListItemControl}
+2023-12-18 21:41:41.990 computer_controller_windows.py[195] upload_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: ListItemControl}
+2023-12-18 21:46:50.905 computer_controller_windows.py[195] upload_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: ListItemControl}
+2023-12-18 21:47:45.867 computer_controller_windows.py[195] upload_google_drive_file -> Find Control Timeout(10s): {Name: '主動式Wi-Fi IoT裝置搜尋與漏洞檢測模組測試報告(Q4)_v19', ControlType: ListItemControl}
+2023-12-18 21:52:43.312 computer_controller_windows.py[172] start_skype_call -> Can not move cursor. ButtonControl's BoundingRectangle is (0,0,0,0)[0x0]. SearchProperties: {Name: '開始通話', ControlType: ButtonControl}
+2023-12-18 21:53:29.640 computer_controller_windows.py[172] start_skype_call -> Can not move cursor. ButtonControl's BoundingRectangle is (0,0,0,0)[0x0]. SearchProperties: {Name: '開始通話', ControlType: ButtonControl}
+2023-12-18 21:54:25.721 computer_controller_windows.py[172] start_skype_call -> Can not move cursor. ButtonControl's BoundingRectangle is (0,0,0,0)[0x0]. SearchProperties: {Name: '開始通話', ControlType: ButtonControl}
+2023-12-18 21:55:30.954 computer_controller_windows.py[172] start_skype_call -> Can not move cursor. ButtonControl's BoundingRectangle is (0,0,0,0)[0x0]. SearchProperties: {Name: '開始通話', ControlType: ButtonControl}
