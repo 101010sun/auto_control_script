@@ -88,7 +88,7 @@ def acerT9300(scenario: int):
 
 def asusA550v(scenario: int):
     controller = AsusA550VController()
-    # controller.enable_wifi()
+    controller.enable_wifi()
 
     if scenario == 1:
         controller.watch_predefined_youtube_videos(10)
@@ -109,27 +109,27 @@ def asusA550v(scenario: int):
     elif scenario == 9:
         controller.start_skype_call(5, 'asusA550v_tester')
     
-    # controller.disable_wifi()
+    controller.disable_wifi()
     return
 
 
 def main():
     scenario_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] # 總共9個場景
     
-    # random_index = random.randint(0, len(scenario_list)-1)
-    # value = scenario_list[random_index]
-    # samsungS20FE(value)
-    # scenario_list.remove(value)
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    samsungS20FE(value)
+    scenario_list.remove(value)
     
-    # random_index = random.randint(0, len(scenario_list)-1)
-    # value = scenario_list[random_index]
-    # oppoReno7(value)
-    # scenario_list.remove(value)
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    oppoReno7(value)
+    scenario_list.remove(value)
     
-    # random_index = random.randint(0, len(scenario_list)-1)
-    # value = scenario_list[random_index]
-    # acerT9300(value)
-    # scenario_list.remove(value)
+    random_index = random.randint(0, len(scenario_list)-1)
+    value = scenario_list[random_index]
+    acerT9300(value)
+    scenario_list.remove(value)
 
     random_index = random.randint(0, len(scenario_list)-1)
     value = scenario_list[random_index]
