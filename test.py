@@ -2,7 +2,7 @@ from cellphone import SamsungS20FEController, OppoReno7Controller
 from computer import AcerT9300Controller
 from computer import AsusA550VController
 from computer import MsiM16Controller
-from logger import Logger
+from base.logger import Logger
 import random
 
 

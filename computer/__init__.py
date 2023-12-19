@@ -1,3 +1,3 @@
 from computer.computer_controller_acert9300 import AcerT9300Controller
 from computer.computer_controller_asusa550v import AsusA550VController
-from computer_controller_msim16 import MsiM16Controller
+from computer.computer_controller_msim16 import MsiM16Controller

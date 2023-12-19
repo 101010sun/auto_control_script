@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
-from logger import Logger
+from base import ControllerBase
+from base import Logger
 import os
 import random
 import json
@@ -8,7 +9,7 @@ import time
 # 載入環境變數
 load_dotenv()
 
-class AndroidCellphoneController:
+class AndroidCellphoneController(ControllerBase):
     def _clean_up(self):
         return
 

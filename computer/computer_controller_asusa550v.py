@@ -56,7 +56,7 @@ class AsusA550VController(WindowsController):
         return super().view_specific_webpages(playTime)
     
 
-    def start_skype_call(self, playTime: int, joinName: str):
+    def start_skype_call(self, playTime: int):
         with open("url_list.json", "r") as f:
             file = json.load(f)
             skypeLink = file["skype_url"]
@@ -69,7 +69,7 @@ class AsusA550VController(WindowsController):
         chromeWindow.ButtonControl(searchDepth=7, Name="取消").Click()
         chromeWindow.ButtonControl(searchDepth=8, Name="以來賓身分加入").Click()
         time.sleep(7)
-        chromeWindow.EditControl(searchDepth=11, Name="輸入您的名稱").SendKeys(joinName)
+        chromeWindow.EditControl(searchDepth=11, Name="輸入您的名稱").SendKeys('asusA550v_tester')
         time.sleep(1)
 
         pyautogui.moveTo(691, 445, duration=0.5)# 滑鼠移到中間
