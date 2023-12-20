@@ -76,10 +76,10 @@ class MsiM16Controller(ControllerBase):
         pyautogui.typewrite(web_download_list[random_index])
         pyautogui.press('enter')
         time.sleep(2)
-
         time.sleep(25) # 等待下載
-        # self._clean_up()
 
+        self._clean_up()
+        pyautogui.click(1126, 233, duration=0.3) # 未下載完須點選結束
         return
 
     def play_spotify_music(self, playTime: int):

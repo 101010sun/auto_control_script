@@ -48,6 +48,7 @@ def test_download_web_file():
 
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    pyautogui.click(1126, 233, duration=0.3) # 未下載完須點選結束
     return
 
 def main():
