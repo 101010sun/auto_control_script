@@ -107,6 +107,9 @@ def test_meet():
     pyautogui.click(1248, 698, duration=0.2) # 立即加入
     time.sleep(10)
     pyautogui.click(1145, 1163, duration=0.3) # 退出通話
+
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return 
     
 def main():
