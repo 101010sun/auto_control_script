@@ -44,7 +44,7 @@ class MsiM16Controller(ControllerBase):
             pyautogui.click(172, 96, duration=0.2)  # 網址列
             pyautogui.typewrite(url)
             pyautogui.press('enter')
-            time.sleep(2) # 等待網頁載入
+            time.sleep(5) # 等待網頁載入
         return 
     
     def watch_predefined_youtube_videos(self, playTime: int):
@@ -109,7 +109,7 @@ class MsiM16Controller(ControllerBase):
         newMail = "?compose=new"
 
         self._open_application("Google Chrome", f"{gmailUrl}{newMail}")
-        time.sleep(3)
+        time.sleep(2)
         pyautogui.click(1350, 641, duration=0.3)  # 收件者
         pyautogui.typewrite(gmailDes)
         pyautogui.click(1358, 682, duration=0.3)  # 點

@@ -184,7 +184,7 @@ def test_upload_file():
     pyautogui.click(172, 96, duration=0.2)  # 網址列
     pyautogui.typewrite(google_drive_url)
     pyautogui.press('enter')
-    time.sleep(2)
+    time.sleep(5)
 
     pyautogui.click(69, 222, duration=0.2)  # 點選新增
     pyautogui.click(88, 261, duration=0.2)  # 點選檔案上傳
