@@ -45,7 +45,6 @@ class ContactServer:
         return
 
     # 監聽 func.
-
     def wait_for_socket_connection(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((self.host, self.port))
@@ -62,7 +61,6 @@ class ContactServer:
             s.close()
 
     # 處理請求 func.
-
     def receive_socket_message(self, s: socket.socket, connection: socket.socket, address: socket._RetAddress):
         with connection:
             message = connection.recv(1024)  # 接收 msg
