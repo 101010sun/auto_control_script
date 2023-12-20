@@ -22,7 +22,7 @@ class ContactServer:
 
         self.acer_host = os.environ.get("ACER_HOST")
         self.acer_port = os.environ.get("ACER_PORT")
-
+        
         self.asus_host = os.environ.get("ASUS_HOST")
         self.asus_port = os.environ.get("ASUS_PORT")
 
@@ -93,7 +93,7 @@ class ContactServer:
             elif localtime().tm_hour == start_hour and localtime().tm_min == (start_minute + 2):
                 self.logger.logMsg('Call device do scenario !')
                 break
-
+                
         # 宣告手機裝置的 controller
         samsungS20FE = SamsungS20FEController()
         oppoReno7 = OppoReno7Controller()
@@ -158,7 +158,7 @@ class ContactServer:
         conn_asus_attack = threading.Thread(target=self.connect_to_client,
                                             args=(self.asus_host, self.asus_port, 'attack_start',))
         conn_asus_attack.start()
-
+        
         conn_msi_attack = threading.Thread(target=self.connect_to_client,
                                            args=(self.msi_host, self.msi_port, 'attack_start',))
         conn_msi_attack.start()

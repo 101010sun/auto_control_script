@@ -218,7 +218,7 @@ class ContactNode:
             except Exception:
                 self.logger.logMsg(f"{message} cannot be parsed")
             self.logger.logMsg(f"Received: {parsed_msg}")
-
+            
             if message:
                 # server 傳送 執行正常流量指令
                 if parsed_msg['msg'] == "normal_flow":
