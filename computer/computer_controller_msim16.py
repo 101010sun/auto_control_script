@@ -13,7 +13,7 @@ load_dotenv()
 
 class MsiM16Controller(ControllerBase):
     def _clean_up(self):
-        pyautogui.moveTo()  # 移至筆電中心
+        pyautogui.click(951, 574)  # 移至筆電中心
         pyautogui.hotkey('alt', 'f4', interval=0.5)  # 關閉視窗
         return
 
@@ -42,7 +42,18 @@ class MsiM16Controller(ControllerBase):
         # 隨機選擇要瀏覽的影片
         random_index = random.randint(0, len(youtube_video_list)-1)
 
-        pyautogui.moveTo()
+        pyautogui.click(10, 15)  # 選單
+        pyautogui.click(84, 53)  # 選單搜尋
+        pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+        pyautogui.press('enter')
+        time.sleep(2)
+
+        pyautogui.click(172, 96)  # 網址列
+        pyautogui.typewrite(youtube_video_list[random_index])
+        pyautogui.press('enter')
+        time.sleep(2)
+        time.sleep(playTime)
+        self._clean_up
         return
 
     def download_web_file(self):
