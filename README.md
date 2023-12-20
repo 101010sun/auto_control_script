@@ -6,10 +6,12 @@ pip install python-dotenv pyautogui pywinauto uiautomation logging
 ```
 
 computer:
+
 1. 安裝 python, git, vscode
 2. Chrome, Skype, Spotify
 
 cellphone:
+
 1. 安裝 Skype, Chrome, Spotify, 雲端硬碟, Gmail
 2. 開發者模式 關閉手機休眠
 
@@ -32,13 +34,13 @@ python .\automation.py -t3 > log.txt
 
 ## Description
 
-| File | Dir | Description|
-| --- | --- | --- |
-| adb.exe | (root) | Android 手機 command line 執行應用程式 |
-| AdbWinApi.dll | (root) | Android 手機 command line 所需檔案 | 
-| AdbWinUsbApi.dll | (root) | Android 手機 command line 所需檔案 |
-| main.py | center controller 主要執行程式 |
-| url_list.json | (root) | 包含腳本內所有 URL 的 JSON 檔案 |
+| File             | Dir                            | Description                            |
+| ---------------- | ------------------------------ | -------------------------------------- |
+| adb.exe          | (root)                         | Android 手機 command line 執行應用程式 |
+| AdbWinApi.dll    | (root)                         | Android 手機 command line 所需檔案     |
+| AdbWinUsbApi.dll | (root)                         | Android 手機 command line 所需檔案     |
+| main.py          | center controller 主要執行程式 |
+| url_list.json    | (root)                         | 包含腳本內所有 URL 的 JSON 檔案        |
 
 每次執行前，須執行動作
 
