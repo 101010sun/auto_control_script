@@ -34,8 +34,8 @@ class MsiM16Controller(ControllerBase):
         return
 
     def _open_application(self, appName: str):
-        pyautogui.click(10, 15, duration=0.5)  # 選單
-        pyautogui.click(84, 53, duration=0.3)  # 選單搜尋
+        pyautogui.click(10, 15, duration=0.3)  # 選單
+        pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
         pyautogui.typewrite(appName)  # 開啟 chrome
         pyautogui.press('enter')
         time.sleep(1)  # 等待開啟
@@ -52,7 +52,7 @@ class MsiM16Controller(ControllerBase):
         random_index = random.randint(0, len(youtube_video_list)-1)
 
         self._open_application("Google Chrome")
-        pyautogui.click(172, 96, duration=0.3)  # 網址列
+        pyautogui.click(172, 96, duration=0.2)  # 網址列
         pyautogui.typewrite(youtube_video_list[random_index])
         pyautogui.press('enter')
         time.sleep(2)
@@ -72,14 +72,15 @@ class MsiM16Controller(ControllerBase):
         random_index = random.randint(0, len(web_download_list)-1)
 
         self._open_application("Google Chrome")
-        pyautogui.click(172, 96, duration=0.3)  # 網址列
+        pyautogui.click(172, 96, duration=0.2)  # 網址列
         pyautogui.typewrite(web_download_list[random_index])
         pyautogui.press('enter')
         time.sleep(2)
         time.sleep(25) # 等待下載
 
         self._clean_up()
-        pyautogui.click(1126, 233, duration=0.3) # 未下載完須點選結束
+        time.sleep(0.3)
+        pyautogui.click(1126, 233, duration=0.2) # 未下載完須點選結束
         return
 
     def play_spotify_music(self, playTime: int):
