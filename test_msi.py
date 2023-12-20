@@ -29,7 +29,7 @@ def test_youtube():
     time.sleep(10) # play time
 
     pyautogui.click(951, 574, duration=1)  # 移至筆電中心
-    pyautogui.hotkey('alt', 'f4', interval=1)  # 關閉視窗
+    pyautogui.hotkey('alt', 'F4', interval=1)  # 關閉視窗
 
     return
 
