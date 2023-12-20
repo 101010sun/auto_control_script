@@ -1,10 +1,9 @@
 from base import Logger
 from base import ControllerBase
 from dotenv import load_dotenv
-from time import localtime
 import time
-import socket
 import threading
+import socket
 import os
 import pickle
 import pyautogui
@@ -246,7 +245,7 @@ class ContactNode:
         start_minute = int(os.environ.get('START_MINUTE'))
         # 時間到開始
         while True:
-            if localtime().tm_hour == start_hour and localtime().tm_min == start_minute:
+            if time.localtime().tm_hour == start_hour and time.localtime().tm_min == start_minute:
                 self.controller.enable_wifi()
                 self.logger.logMsg('Init finish !')
                 break
