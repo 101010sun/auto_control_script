@@ -105,7 +105,7 @@ def test_meet():
     pyautogui.click(602, 768, duration=0.1) # 加入
     time.sleep(5)
     pyautogui.click(1248, 698, duration=0.2) # 立即加入
-    time.sleep(20)
+    time.sleep(10)
     pyautogui.click(1145, 1163, duration=0.3) # 退出通話
     return 
     
