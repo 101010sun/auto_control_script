@@ -115,7 +115,7 @@ class MsiM16Controller(ControllerBase):
         newMail = "?compose=new"
 
         self._open_application("Google Chrome", f"{gmailUrl}{newMail}")
-        time.sleep(5)
+        time.sleep(3)
         pyautogui.click(1350, 641, duration=0.3)  # 收件者
         pyautogui.typewrite(gmailDes)
         pyautogui.click(1358, 682, duration=0.3)  # 點
@@ -124,7 +124,7 @@ class MsiM16Controller(ControllerBase):
         pyautogui.click(1302, 745, duration=0.3)  # 內文
         pyautogui.typewrite(gmailBody)
         pyautogui.click(1294, 1165, duration=0.3)  # 傳送
-        time.sleep(1)
+        time.sleep(3)
         self._clean_up()
         return
 
