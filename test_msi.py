@@ -6,6 +6,10 @@ import pyautogui
 import json
 import os
 
+# 載入環境變數
+load_dotenv()
+
+
 def test_youtube():
     youtube_video_list = []
     with open("url_list.json", "r") as f:
