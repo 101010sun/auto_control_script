@@ -1,40 +1,31 @@
 
 class ControllerBase:
     def watch_predefined_youtube_videos(self, playTime: int):
-        return 
-    
+        return
 
     def download_web_file(self):
         return
-    
 
     def play_spotify_music(self, playTime: int):
         return
-    
 
     def join_google_meet(self):
         return
 
-
     def send_gmail(self):
         return
-    
 
     def view_specific_webpages(self, playTime: int):
         return
-    
 
     def start_skype_call(self, playTime: int):
         return
-    
 
     def upload_google_drive_file(self):
         return
 
-
     def download_google_drive_file(self):
         return
-    
 
     def process_scenario(self, scenario: int):
         if scenario == 1:
@@ -55,5 +46,3 @@ class ControllerBase:
             self.download_google_drive_file()
         elif scenario == 9:
             self.start_skype_call(5)
-    
-    

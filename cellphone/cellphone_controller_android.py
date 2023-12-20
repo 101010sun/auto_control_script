@@ -9,21 +9,20 @@ import time
 # 載入環境變數
 load_dotenv()
 
+
 class AndroidCellphoneController(ControllerBase):
     def _clean_up(self):
         return
-
 
     def enable_wifi(self):
         os.system(f"adb shell svc wifi enable")
         time.sleep(8)
         return
-    
 
     def disable_wifi(self):
         os.system(f"adb shell svc wifi disable")
         time.sleep(1)
-        return 
+        return
 
     def watch_predefined_youtube_videos(self, playTime: int):
         # 取得 predefined Youtube videos
@@ -39,7 +38,6 @@ class AndroidCellphoneController(ControllerBase):
         self._clean_up()
         return
 
-
     def download_web_file(self):
         # 取得 predefined nodejs and python download url
         web_download_list = []
@@ -53,23 +51,20 @@ class AndroidCellphoneController(ControllerBase):
         time.sleep(1)
         self._clean_up()
         return
-    
 
     def play_spotify_music(self, playTime: int):
         playlist = os.environ.get("SPOTIFY_PLAYLIST")  # 播放清單代碼
-        os.system(f"adb shell am start -a android.intent.action.VIEW spotify:playlist:{playlist}:play")
+        os.system(
+            f"adb shell am start -a android.intent.action.VIEW spotify:playlist:{playlist}:play")
         time.sleep(playTime)
         self._clean_up()
         return
-    
 
     def join_google_meet(self):
         return
 
-
     def send_gmail(self):
         return
-    
 
     def view_specific_webpages(self, playTime: int):
         # 取得 predefined webpage url
@@ -84,16 +79,12 @@ class AndroidCellphoneController(ControllerBase):
         time.sleep(playTime)
         self._clean_up()
         return
-    
 
     def start_skype_call(self, playTime: int):
         return
-    
 
     def upload_google_drive_file(self):
         return
 
-
     def download_google_drive_file(self):
         return
-    
