@@ -103,7 +103,7 @@ def test_meet():
     pyautogui.click(350, 771, duration=0.3) # 會議代碼
     pyautogui.typewrite(googleMeetRoom)
     pyautogui.click(602, 768, duration=0.1) # 加入
-    
+    time.sleep(3)
     pyautogui.click(1248, 698, duration=0.2) # 立即加入
     time.sleep(20)
     pyautogui.click(1145, 1163, duration=0.3) # 退出通話
