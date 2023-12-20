@@ -55,7 +55,7 @@ def test_download_web_file():
     return
 
 def test_spotify():
-    playlistName = os.environ.get("SPOTIFY_PLAYLIST_NAME")  # 播放清單名稱
+    playlistCode = os.environ.get("SPOTIFY_PLAYLIST")  # 播放清單名稱
         
     with open("url_list.json", "r") as f:
         file = json.load(f)
@@ -68,7 +68,7 @@ def test_spotify():
     time.sleep(1)
 
     pyautogui.click(172, 96, duration=0.2)  # 網址列
-    pyautogui.typewrite(f"{spotify_url}/playlist/{playlistName}")
+    pyautogui.typewrite(f"{spotify_url}/playlist/{playlistCode}")
     pyautogui.press('enter')
     time.sleep(2)
 

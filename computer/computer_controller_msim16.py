@@ -84,7 +84,7 @@ class MsiM16Controller(ControllerBase):
         return
 
     def play_spotify_music(self, playTime: int):
-        playlistName = os.environ.get("SPOTIFY_PLAYLIST_NAME")  # 播放清單名稱
+        playlistCode = os.environ.get("SPOTIFY_PLAYLIST")  # 播放清單代碼
         
         # 取得 predefined nodejs and python download url
         with open("url_list.json", "r") as f:
@@ -93,7 +93,7 @@ class MsiM16Controller(ControllerBase):
         
         self._open_application("Google Chrome")
         pyautogui.click(172, 96, duration=0.2)  # 網址列
-        pyautogui.typewrite(f"{spotify_url}/playlist/{playlistName}")
+        pyautogui.typewrite(f"{spotify_url}/playlist/{playlistCode}")
         pyautogui.press('enter')
         time.sleep(2)
 
