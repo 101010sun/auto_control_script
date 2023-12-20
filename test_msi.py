@@ -33,7 +33,7 @@ def test_youtube():
 
     pyautogui.moveTo(951, 574, interval=1)
     pyautogui.click(951, 574)  # 移至筆電中心
-    pyautogui.hotkey('alt', 'f4', interval=0.5)  # 關閉視窗
+    pyautogui.hotkey('alt', 'f4', interval=1)  # 關閉視窗
 
     return
 
