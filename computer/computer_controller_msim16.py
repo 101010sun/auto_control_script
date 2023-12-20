@@ -132,7 +132,17 @@ class MsiM16Controller(ControllerBase):
         return
 
     def start_skype_call(self, playTime: int):
-
+        skypeLink = self._get_json_data("skype_url")
+        self._open_application("Google Chrome", skypeLink)
+        pyautogui.click(1001, 294, duration=1)  # 取消
+        pyautogui.click(973, 653, duration=0.5)  # 以來賓的身分加入
+        time.sleep(15)
+        pyautogui.click(844, 827, duration=0.5)  # 加入名稱
+        pyautogui.typewrite("msiM16_tester")
+        pyautogui.click(1091, 921, duration=0.5)  # 開始通話
+        
+        time.sleep(playTime)
+        self._clean_up()
         return
 
     def upload_google_drive_file(self):
@@ -151,6 +161,6 @@ class MsiM16Controller(ControllerBase):
         google_drive_url = self._get_json_data("google_drive_donwload_folder_url")
         self._open_application("Google Chrome", google_drive_url)
         pyautogui.click(1708, 371, duration=1)
-        time.sleep(20)
+        time.sleep(25)
         self._clean_up()
         return

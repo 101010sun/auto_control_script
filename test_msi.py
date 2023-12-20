@@ -214,8 +214,36 @@ def test_download_file():
     time.sleep(5)
 
     pyautogui.click(1708, 371, duration=1)
-    time.sleep(20)
+    time.sleep(25)
 
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    return
+
+def test_skype():
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        skypeLink = file["skype_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(skypeLink)
+    pyautogui.press('enter')
+    time.sleep(5)
+
+    pyautogui.click(1001, 294, duration=1)  # 取消
+    pyautogui.click(973, 653, duration=0.5)  # 以來賓的身分加入
+    time.sleep(15)
+    pyautogui.click(844, 827, duration=0.5)  # 加入名稱
+    pyautogui.typewrite("msiM16_tester")
+    pyautogui.click(1091, 921, duration=0.5)  # 開始通話
+    time.sleep(25)
+    
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
