@@ -13,8 +13,8 @@ load_dotenv()
 
 class MsiM16Controller(ControllerBase):
     def _clean_up(self):
-        pyautogui.click(951, 574)  # 移至筆電中心
-        pyautogui.hotkey('alt', 'f4', interval=0.5)  # 關閉視窗
+        pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+        pyautogui.hotkey('alt', 'f4')  # 關閉視窗
         return
 
     def get_cursor_position(self):
@@ -25,6 +25,7 @@ class MsiM16Controller(ControllerBase):
     def enable_wifi(self):
         wlan = os.environ.get("MSI_WLAN")
         os.system(f"sudo ip link set dev {wlan} up")
+        time.sleep(5)
         return
 
     def disable_wifi(self):
@@ -42,13 +43,13 @@ class MsiM16Controller(ControllerBase):
         # 隨機選擇要瀏覽的影片
         random_index = random.randint(0, len(youtube_video_list)-1)
 
-        pyautogui.click(10, 15)  # 選單
-        pyautogui.click(84, 53)  # 選單搜尋
+        pyautogui.click(10, 15, duration=0.5)  # 選單
+        pyautogui.click(84, 53, duration=0.5)  # 選單搜尋
         pyautogui.typewrite("Google Chrome")  # 開啟 chrome
         pyautogui.press('enter')
         time.sleep(2)
 
-        pyautogui.click(172, 96)  # 網址列
+        pyautogui.click(172, 96, duration=0.5)  # 網址列
         pyautogui.typewrite(youtube_video_list[random_index])
         pyautogui.press('enter')
         time.sleep(2)
