@@ -129,6 +129,12 @@ class MsiM16Controller(ControllerBase):
         return
 
     def view_specific_webpages(self, playTime: int):
+        web_webpage_list = self._get_json_data("web_webpage_list")
+        # 隨機選擇瀏覽的網頁頁面
+        random_index = random.randint(0, len(web_webpage_list)-1)
+        self._open_application("Google Chrome", web_webpage_list[random_index])
+        time.sleep(playTime)
+        self._clean_up()
         return
 
     def start_skype_call(self, playTime: int):
