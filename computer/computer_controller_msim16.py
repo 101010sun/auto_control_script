@@ -124,7 +124,7 @@ class MsiM16Controller(ControllerBase):
         pyautogui.click(1302, 745, duration=0.3)  # 內文
         pyautogui.typewrite(gmailBody)
         pyautogui.click(1294, 1165, duration=0.3)  # 傳送
-        time.sleep(0.2)
+        time.sleep(1)
         self._clean_up()
         return
 

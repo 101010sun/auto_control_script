@@ -142,7 +142,7 @@ def test_gmail():
     pyautogui.typewrite(gmailBody)
     pyautogui.click(1294, 1165, duration=0.3)  # 傳送
 
-    time.sleep(0.2)
+    time.sleep(1)
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
