@@ -1,8 +1,10 @@
+from dotenv import load_dotenv
 from base.logger import Logger
 import random
 import time
 import pyautogui
 import json
+import os
 
 def test_youtube():
     youtube_video_list = []
@@ -52,8 +54,33 @@ def test_download_web_file():
     pyautogui.click(1126, 233, duration=0.2) # 未下載完須點選結束
     return
 
+def test_spotify():
+    playlistName = os.environ.get("SPOTIFY_PLAYLIST_NAME")  # 播放清單名稱
+        
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        spotify_url = file["spotify_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(f"{spotify_url}/playlist/{playlistName}")
+    pyautogui.press('enter')
+    time.sleep(2)
+
+    pyautogui.click(485, 531, duration=0.3)  # 播放
+    time.sleep(10)
+    pyautogui.click(485, 531)  # 停止
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    return
+
 def main():
-    test_download_web_file()
+    test_spotify()
 
 
 if __name__ == "__main__":

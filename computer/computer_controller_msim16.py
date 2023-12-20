@@ -84,6 +84,23 @@ class MsiM16Controller(ControllerBase):
         return
 
     def play_spotify_music(self, playTime: int):
+        playlistName = os.environ.get("SPOTIFY_PLAYLIST_NAME")  # 播放清單名稱
+        
+        # 取得 predefined nodejs and python download url
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            spotify_url = file["spotify_url"]
+        
+        self._open_application("Google Chrome")
+        pyautogui.click(172, 96, duration=0.2)  # 網址列
+        pyautogui.typewrite(f"{spotify_url}/playlist/{playlistName}")
+        pyautogui.press('enter')
+        time.sleep(2)
+
+        pyautogui.click(485, 531, duration=0.3)  # 播放
+        time.sleep(playTime)
+        pyautogui.click(485, 531)  # 停止
+        self._clean_up()
         return
 
     def join_google_meet(self):
