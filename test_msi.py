@@ -128,10 +128,11 @@ def test_gmail():
     time.sleep(1)
 
     pyautogui.click(172, 96, duration=0.2)  # 網址列
-    pyautogui.typewrite(gmailUrl)
+    pyautogui.typewrite(f"{gmailUrl}{newMail}")
     pyautogui.press('enter')
     time.sleep(2)
 
+    time.sleep(3)
     pyautogui.click(1350, 641, duration=0.3)  # 收件者
     pyautogui.typewrite(gmailDes)
     pyautogui.click(1358, 682, duration=0.2)  # 主旨
