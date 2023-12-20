@@ -33,14 +33,14 @@ class AsusA550VController(WindowsController):
     def watch_predefined_youtube_videos(self, playTime: int):
         return super().watch_predefined_youtube_videos(playTime)
 
-    def download_web_file(self):
-        return super().download_web_file()
+    def download_web_file(self, waitTime: int):
+        return super().download_web_file(waitTime)
 
     def play_spotify_music(self, playTime: int):
         return super().play_spotify_music(playTime)
 
-    def join_google_meet(self):
-        return super().join_google_meet()
+    def join_google_meet(self, waitTime: int):
+        return super().join_google_meet(waitTime)
 
     def send_gmail(self):
         return super().send_gmail()
@@ -49,9 +49,7 @@ class AsusA550VController(WindowsController):
         return super().view_specific_webpages(playTime)
 
     def start_skype_call(self, playTime: int):
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            skypeLink = file["skype_url"]
+        skypeLink = self._get_json_data("skype_url")
 
         subprocess.Popen(
             'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
@@ -81,8 +79,8 @@ class AsusA550VController(WindowsController):
         self._clean_up(chromeWindow)
         return
 
-    def upload_google_drive_file(self):
-        return super().upload_google_drive_file()
+    def upload_google_drive_file(self, waitTime: int):
+        return super().upload_google_drive_file(waitTime)
 
-    def download_google_drive_file(self):
-        return super().download_google_drive_file()
+    def download_google_drive_file(self, waitTime: int):
+        return super().download_google_drive_file(waitTime)

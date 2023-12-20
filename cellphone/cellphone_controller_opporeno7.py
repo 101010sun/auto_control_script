@@ -25,8 +25,8 @@ class OppoReno7Controller(AndroidCellphoneController):
     def watch_predefined_youtube_videos(self, playTime: int):
         return super().watch_predefined_youtube_videos(playTime)
 
-    def download_web_file(self):
-        return super().download_web_file()
+    def download_web_file(self, waitTime: int):
+        return super().download_web_file(waitTime)
 
     def play_spotify_music(self, playTime: int):
         playlist = os.environ.get("SPOTIFY_PLAYLIST")  # 播放清單代碼
@@ -109,7 +109,7 @@ class OppoReno7Controller(AndroidCellphoneController):
         self._clean_up()
         return
 
-    def upload_google_drive_file(self):
+    def upload_google_drive_file(self, waitTime: int):
         os.system(
             f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
         time.sleep(1)
@@ -122,11 +122,11 @@ class OppoReno7Controller(AndroidCellphoneController):
         os.system(f"adb shell input tap 419 1061")  # 點擊第一份文件
         time.sleep(0.5)
         os.system(f"adb shell input tap 845 207")  # 點擊選取
-        time.sleep(30)  # 等待上傳
+        time.sleep(waitTime)  # 等待上傳
         self._clean_up()
         return
 
-    def download_google_drive_file(self):
+    def download_google_drive_file(self, waitTime: int):
         os.system(
             f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
         time.sleep(1)
@@ -137,6 +137,6 @@ class OppoReno7Controller(AndroidCellphoneController):
         os.system(f"adb shell input tap 972 645")  # 點擊第一個文件的選項
         time.sleep(0.5)
         os.system(f"adb shell input tap 305 2173")
-        time.sleep(30)  # 等待下載
+        time.sleep(waitTime)  # 等待下載
         self._clean_up()
         return

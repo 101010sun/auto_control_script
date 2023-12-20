@@ -248,8 +248,19 @@ def test_skype():
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
 
+def enable_wifi(self):
+    wlan = os.environ.get("MSI_WLAN")
+    os.system(f"sudo ip link set dev {wlan} up")
+    time.sleep(5)
+    return
+
+def disable_wifi(self):
+    wlan = os.environ.get("MSI_WLAN")
+    os.system(f"sudo ip link set dev {wlan} down")
+    return
+
 def main():
-    test_skype()
+    enable_wifi()
 
 
 if __name__ == "__main__":

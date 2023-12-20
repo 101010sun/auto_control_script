@@ -23,8 +23,8 @@ class SamsungS20FEController(AndroidCellphoneController):
     def watch_predefined_youtube_videos(self, playTime: int):
         return super().watch_predefined_youtube_videos(playTime)
 
-    def download_web_file(self):
-        return super().download_web_file()
+    def download_web_file(self, waitTime: int):
+        return super().download_web_file(waitTime)
 
     def play_spotify_music(self, playTime: int):
         return super().play_spotify_music(playTime)
@@ -98,7 +98,7 @@ class SamsungS20FEController(AndroidCellphoneController):
         self._clean_up()
         return
 
-    def upload_google_drive_file(self):
+    def upload_google_drive_file(self, waitTime: int):
         os.system(
             f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
         time.sleep(1)
@@ -111,11 +111,11 @@ class SamsungS20FEController(AndroidCellphoneController):
         os.system(f"adb shell input tap 352 1035")  # 點擊第一份文件
         time.sleep(0.5)
         os.system(f"adb shell input tap 853 184")  # 點擊選取
-        time.sleep(30)  # 等待上傳
+        time.sleep(waitTime)  # 等待上傳
         self._clean_up()
         return
 
-    def download_google_drive_file(self):
+    def download_google_drive_file(self, waitTime: int):
         os.system(
             f"adb shell am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
         time.sleep(1)
@@ -126,6 +126,6 @@ class SamsungS20FEController(AndroidCellphoneController):
         os.system(f"adb shell input tap 995 590")  # 點擊第一個文件的選項
         time.sleep(0.5)
         os.system(f"adb shell input tap 300 2187")
-        time.sleep(30)  # 等待下載
+        time.sleep(waitTime)  # 等待下載
         self._clean_up()
         return

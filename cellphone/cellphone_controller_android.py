@@ -38,7 +38,7 @@ class AndroidCellphoneController(ControllerBase):
         self._clean_up()
         return
 
-    def download_web_file(self):
+    def download_web_file(self, waitTime: int):
         # 取得 predefined nodejs and python download url
         web_download_list = []
         with open("url_list.json", "r") as f:
@@ -48,7 +48,7 @@ class AndroidCellphoneController(ControllerBase):
         # 隨機選擇要下載 nodejs or python
         random_index = random.randint(0, len(web_download_list)-1)
         os.system(f"adb shell am start {web_download_list[random_index]}")
-        time.sleep(1)
+        time.sleep(waitTime)
         self._clean_up()
         return
 
@@ -60,7 +60,7 @@ class AndroidCellphoneController(ControllerBase):
         self._clean_up()
         return
 
-    def join_google_meet(self):
+    def join_google_meet(self, playTime: int):
         return
 
     def send_gmail(self):
@@ -83,8 +83,8 @@ class AndroidCellphoneController(ControllerBase):
     def start_skype_call(self, playTime: int):
         return
 
-    def upload_google_drive_file(self):
+    def upload_google_drive_file(self, waitTime: int):
         return
 
-    def download_google_drive_file(self):
+    def download_google_drive_file(self, waitTime: int):
         return

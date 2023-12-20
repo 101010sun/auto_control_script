@@ -3,7 +3,6 @@ from base import ControllerBase
 import uiautomation as auto
 import os
 import random
-import json
 import time
 import subprocess
 
@@ -24,10 +23,7 @@ class WindowsController(ControllerBase):
 
     def watch_predefined_youtube_videos(self, playTime: int):
         # 取得 predefined Youtube videos
-        youtube_video_list = []
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            youtube_video_list = file["youtube_video_list"]
+        youtube_video_list: list = self._get_json_data("youtube_video_list")
 
         # 隨機選擇要瀏覽的影片
         random_index = random.randint(0, len(youtube_video_list)-1)
@@ -45,12 +41,9 @@ class WindowsController(ControllerBase):
         self._clean_up(chromeWindow)
         return
 
-    def download_web_file(self):
+    def download_web_file(self, waitTime: int):
         # 取得 predefined nodejs and python download url
-        web_download_list = []
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            web_download_list = file["web_download_list"]
+        web_download_list = self._get_json_data("web_download_list")
 
         # 隨機選擇要下載 nodejs or python
         random_index = random.randint(0, len(web_download_list)-1)
@@ -63,7 +56,7 @@ class WindowsController(ControllerBase):
         chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(
             web_download_list[random_index] + '{Enter}')
 
-        time.sleep(25)  # 等待下載
+        time.sleep(waitTime)  # 等待下載
         self._clean_up(chromeWindow)
 
         if chromeWindow.ButtonControl(searchDepth=7, Name="結束").Exists():
@@ -92,11 +85,9 @@ class WindowsController(ControllerBase):
         self._clean_up(spotifyWindow)
         return
 
-    def join_google_meet(self):
+    def join_google_meet(self, playTime: int):
         googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            googleMeetUrl = file["google_meet_url"]
+        googleMeetUrl = self._get_json_data("google_meet_url")
 
         subprocess.Popen(
             'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
@@ -110,7 +101,7 @@ class WindowsController(ControllerBase):
         time.sleep(7)
 
         chromeWindow.ButtonControl(searchDepth=13, Name='立即加入').Click()
-        time.sleep(20)
+        time.sleep(playTime)
         chromeWindow.ButtonControl(searchDepth=11, Name='退出通話').Click()
         self._clean_up(chromeWindow)
         return
@@ -149,10 +140,7 @@ class WindowsController(ControllerBase):
 
     def view_specific_webpages(self, playTime: int):
         # 取得 predefined webpage url
-        web_webpage_list = []
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            web_webpage_list = file["web_webpage_list"]
+        web_webpage_list = self._get_json_data("web_webpage_list")
 
         # 隨機選擇瀏覽的網頁頁面
         random_index = random.randint(0, len(web_webpage_list)-1)
@@ -171,10 +159,8 @@ class WindowsController(ControllerBase):
     def start_skype_call(self, playTime: int):
         return
 
-    def upload_google_drive_file(self):
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            google_drive_url = file["google_drive_url"]
+    def upload_google_drive_file(self, waitTime: int):
+        google_drive_url = self._get_json_data("google_drive_url")
 
         subprocess.Popen(
             'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
@@ -191,14 +177,12 @@ class WindowsController(ControllerBase):
         chromeWindow.ListItemControl(
             searchDepth=8, Name=f"{os.environ.get('GOOGLE_DRIVE_FILE')}.docx").Click()  # 點選文件
         chromeWindow.ButtonControl(searchDepth=3, Name="開啟(O)").Click()  # 開啟
-        time.sleep(10)
+        time.sleep(waitTime)
         self._clean_up(chromeWindow)
         return
 
-    def download_google_drive_file(self):
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            google_drive_url = file["google_drive_donwload_folder_url"]
+    def download_google_drive_file(self, waitTime: int):
+        google_drive_url = self._get_json_data("google_drive_donwload_folder_url")
 
         subprocess.Popen(
             'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
@@ -211,6 +195,6 @@ class WindowsController(ControllerBase):
         chromeWindow.TextControl(
             searchDepth=18, Name=f"{os.environ.get('GOOGLE_DRIVE_FILE')}.docx").RightClick()  # 按文件檔案右鍵
         chromeWindow.MenuItemControl(searchDepth=5, Name="下載").Click()
-        time.sleep(25)
+        time.sleep(waitTime)
         self._clean_up(chromeWindow)
         return
