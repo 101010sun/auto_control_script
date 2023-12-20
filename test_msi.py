@@ -170,8 +170,35 @@ def test_gmail():
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
 
+def test_upload_file():
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        google_drive_url = file["google_drive_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(google_drive_url)
+    pyautogui.press('enter')
+    time.sleep(2)
+
+    pyautogui.click(69, 222, duration=0.2)  # 點選新增
+    pyautogui.click(88, 261, duration=0.2)  # 點選檔案上傳
+    pyautogui.click(420, 203, duration=1)  # 家目錄
+    pyautogui.click(693, 579, duration=0.5)
+    pyautogui.click(1502, 1031, duration=0.2)  # 開啟
+    time.sleep(10)
+
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    return
+ 
 def main():
-    test_web()
+    test_upload_file()
 
 
 if __name__ == "__main__":

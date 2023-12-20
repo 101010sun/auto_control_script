@@ -46,12 +46,6 @@ class MsiM16Controller(ControllerBase):
             pyautogui.press('enter')
             time.sleep(2) # 等待網頁載入
         return 
-
-    def _get_json_data(self, key: str):
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            word = file[key]
-            return word
     
     def watch_predefined_youtube_videos(self, playTime: int):
         # 取得 predefined Youtube videos
@@ -124,7 +118,7 @@ class MsiM16Controller(ControllerBase):
         pyautogui.click(1302, 745, duration=0.3)  # 內文
         pyautogui.typewrite(gmailBody)
         pyautogui.click(1294, 1165, duration=0.3)  # 傳送
-        time.sleep(3)
+        time.sleep(10)
         self._clean_up()
         return
 
@@ -138,10 +132,21 @@ class MsiM16Controller(ControllerBase):
         return
 
     def start_skype_call(self, playTime: int):
+
         return
 
     def upload_google_drive_file(self):
+        google_drive_url = self._get_json_data("google_drive_url")
+        self._open_application("Google Chrome", google_drive_url)
+        pyautogui.click(69, 222, duration=0.2)  # 點選新增
+        pyautogui.click(88, 261, duration=0.2)  # 點選檔案上傳
+        pyautogui.click(420, 203, duration=1)  # 家目錄
+        pyautogui.click(693, 579, duration=0.5)
+        pyautogui.click(1502, 1031, duration=0.2)  # 開啟
+        time.sleep(10)
+        self._clean_up()
         return
 
     def download_google_drive_file(self):
+
         return

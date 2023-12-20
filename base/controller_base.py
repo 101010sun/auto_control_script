@@ -1,5 +1,12 @@
+import json
 
 class ControllerBase:
+    def _get_json_data(self, key: str):
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            word = file[key]
+            return word
+        
     def watch_predefined_youtube_videos(self, playTime: int):
         return
 
