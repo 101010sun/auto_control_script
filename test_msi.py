@@ -191,7 +191,7 @@ def test_upload_file():
     pyautogui.click(420, 203, duration=1)  # 家目錄
     pyautogui.click(693, 579, duration=0.5)
     pyautogui.click(1502, 1031, duration=0.2)  # 開啟
-    time.sleep(10)
+    time.sleep(20)
 
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
