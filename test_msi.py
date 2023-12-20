@@ -243,13 +243,13 @@ def test_skype():
     pyautogui.typewrite("msiM16_tester")
     pyautogui.click(1091, 921, duration=0.5)  # 開始通話
     time.sleep(25)
-    
+
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
 
 def main():
-    test_download_file()
+    test_skype()
 
 
 if __name__ == "__main__":
