@@ -107,13 +107,46 @@ def test_meet():
     pyautogui.click(1248, 698, duration=0.2) # 立即加入
     time.sleep(10)
     pyautogui.click(1145, 1163, duration=0.3) # 退出通話
-
+    time.sleep(0.2)
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return 
     
+def test_gmail():
+    gmailDes = os.environ.get("GMAIL_DES")
+    gmailSubject = os.environ.get("GMAIL_SUBJECT")
+    gmailBody = os.environ.get("GMAIL_BODY")
+    newMail = "?compose=new"
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        gmailUrl = file["gmail_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(gmailUrl)
+    pyautogui.press('enter')
+    time.sleep(2)
+
+    pyautogui.click(1350, 641, duration=0.3)  # 收件者
+    pyautogui.typewrite(gmailDes)
+    pyautogui.click(1358, 682, duration=0.2)  # 主旨
+    pyautogui.typewrite(gmailSubject)
+    pyautogui.click(1302, 745, duration=0.2)  # 內文
+    pyautogui.typewrite(gmailBody)
+    pyautogui.click(1294, 1165, duration=0.2)  # 傳送
+
+    time.sleep(0.2)
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    return
+
 def main():
-    test_meet()
+    test_gmail()
 
 
 if __name__ == "__main__":

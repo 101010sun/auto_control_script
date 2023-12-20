@@ -47,12 +47,15 @@ class MsiM16Controller(ControllerBase):
             time.sleep(2) # 等待網頁載入
         return 
 
-    def watch_predefined_youtube_videos(self, playTime: int):
-        # 取得 predefined Youtube videos
-        youtube_video_list = []
+    def _get_json_data(self, key: str):
         with open("url_list.json", "r") as f:
             file = json.load(f)
-            youtube_video_list = file["youtube_video_list"]
+            word = file[key]
+            return word
+    
+    def watch_predefined_youtube_videos(self, playTime: int):
+        # 取得 predefined Youtube videos
+        youtube_video_list: list = self._get_json_data("youtube_video_list")
 
         # 隨機選擇要瀏覽的影片
         random_index = random.randint(0, len(youtube_video_list)-1)
@@ -64,10 +67,7 @@ class MsiM16Controller(ControllerBase):
 
     def download_web_file(self):
         # 取得 predefined nodejs and python download url
-        web_download_list = []
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            web_download_list = file["web_download_list"]
+        web_download_list: list = self._get_json_data("web_download_list")
         
         # 隨機選擇要下載 nodejs or python
         random_index = random.randint(0, len(web_download_list)-1)
@@ -81,24 +81,20 @@ class MsiM16Controller(ControllerBase):
 
     def play_spotify_music(self, playTime: int):
         playlistCode = os.environ.get("SPOTIFY_PLAYLIST")  # 播放清單代碼
-        
-        # 取得 predefined nodejs and python download url
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            spotify_url = file["spotify_url"]
+        spotify_url: str = self._get_json_data("spotify_url")
         
         self._open_application("Google Chrome", f"{spotify_url}/playlist/{playlistCode}")
         pyautogui.click(485, 531, duration=0.3)  # 播放
         time.sleep(playTime)
         pyautogui.click(485, 531)  # 停止
+        time.sleep(0.2)
         self._clean_up()
         return
 
     def join_google_meet(self):
         googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
-        with open("url_list.json", "r") as f:
-            file = json.load(f)
-            googleMeetUrl = file["google_meet_url"]
+        googleMeetUrl: str = self._get_json_data("google_meet_url")
+
         self._open_application("Google Chrome", googleMeetUrl)
         pyautogui.click(350, 771, duration=0.3) # 會議代碼
         pyautogui.typewrite(googleMeetRoom)
@@ -107,10 +103,27 @@ class MsiM16Controller(ControllerBase):
         pyautogui.click(1248, 698, duration=0.2) # 立即加入
         time.sleep(20)
         pyautogui.click(1145, 1163, duration=0.3) # 退出通話
+        time.sleep(0.2)
         self._clean_up()
         return
 
     def send_gmail(self):
+        gmailUrl: str = self._get_json_data("gmail_url")
+        gmailDes = os.environ.get("GMAIL_DES")
+        gmailSubject = os.environ.get("GMAIL_SUBJECT")
+        gmailBody = os.environ.get("GMAIL_BODY")
+        newMail = "?compose=new"
+
+        self._open_application("Google Chrome", f"{gmailUrl}{newMail}")
+        pyautogui.click(1350, 641, duration=0.3)  # 收件者
+        pyautogui.typewrite(gmailDes)
+        pyautogui.click(1358, 682, duration=0.2)  # 主旨
+        pyautogui.typewrite(gmailSubject)
+        pyautogui.click(1302, 745, duration=0.2)  # 內文
+        pyautogui.typewrite(gmailBody)
+        pyautogui.click(1294, 1165, duration=0.2)  # 傳送
+        time.sleep(0.2)
+        self._clean_up()
         return
 
     def view_specific_webpages(self, playTime: int):
