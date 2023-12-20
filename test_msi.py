@@ -262,6 +262,7 @@ def disable_wifi():
 def main():
     disable_wifi()
     print('sleep 15 s')
+    time.sleep(15)
     enable_wifi()
 
 
