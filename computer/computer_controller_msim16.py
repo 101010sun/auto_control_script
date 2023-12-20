@@ -93,7 +93,7 @@ class MsiM16Controller(ControllerBase):
         
         self._open_application("Google Chrome")
         pyautogui.click(172, 96, duration=0.2)  # 網址列
-        pyautogui.typewrite(f"{spotify_url}/playlist/{playlistCode}")
+        pyautogui.typewrite(f"{spotify_url}playlist/{playlistCode}")
         pyautogui.press('enter')
         time.sleep(2)
 
