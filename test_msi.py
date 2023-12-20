@@ -197,8 +197,31 @@ def test_upload_file():
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
  
+def test_download_file():
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        google_drive_url = file["google_drive_donwload_folder_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(google_drive_url)
+    pyautogui.press('enter')
+    time.sleep(5)
+
+    pyautogui.click(1708, 371, duration=1)
+    time.sleep(20)
+
+    pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
+    pyautogui.hotkey('alt', 'F4')  # 關閉視窗
+    return
+
 def main():
-    test_upload_file()
+    test_download_file()
 
 
 if __name__ == "__main__":

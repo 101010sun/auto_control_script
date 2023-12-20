@@ -148,5 +148,9 @@ class MsiM16Controller(ControllerBase):
         return
 
     def download_google_drive_file(self):
-
+        google_drive_url = self._get_json_data("google_drive_donwload_folder_url")
+        self._open_application("Google Chrome", google_drive_url)
+        pyautogui.click(1708, 371, duration=1)
+        time.sleep(20)
+        self._clean_up()
         return
