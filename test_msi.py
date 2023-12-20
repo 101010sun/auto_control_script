@@ -99,7 +99,7 @@ def test_meet():
     pyautogui.typewrite(googleMeetUrl)
     pyautogui.press('enter')
     time.sleep(2)
-    
+
     pyautogui.click(350, 771, duration=0.3) # 會議代碼
     pyautogui.typewrite(googleMeetRoom)
     
@@ -109,7 +109,7 @@ def test_meet():
     return 
     
 def main():
-    test_spotify()
+    test_meet()
 
 
 if __name__ == "__main__":
