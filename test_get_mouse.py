@@ -2,6 +2,7 @@ from base.logger import Logger
 import time
 import pyautogui
 
+
 def get_cursor_position():
         time.sleep(2)
         print(pyautogui.position())

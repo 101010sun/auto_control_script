@@ -3,7 +3,6 @@ from computer import AcerT9300Controller
 from computer import AsusA550VController
 from computer import MsiM16Controller
 from base.logger import Logger
-import random
 
 
 def samsungS20FE(scenario: int):
