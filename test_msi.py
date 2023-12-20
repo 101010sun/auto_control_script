@@ -44,7 +44,7 @@ def test_download_web_file():
     pyautogui.typewrite(web_download_list[random_index])
     pyautogui.press('enter')
     time.sleep(1)
-    time.sleep(25)
+    time.sleep(10)
 
     pyautogui.click(951, 574, duration=0.5)  # 移至筆電中心
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
