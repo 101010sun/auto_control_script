@@ -93,11 +93,10 @@ class WindowsController(ControllerBase):
         return
 
     def join_google_meet(self):
-
+        googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
         with open("url_list.json", "r") as f:
             file = json.load(f)
             googleMeetUrl = file["google_meet_url"]
-        googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
 
         subprocess.Popen(
             'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome

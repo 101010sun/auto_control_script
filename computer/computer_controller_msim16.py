@@ -33,12 +33,18 @@ class MsiM16Controller(ControllerBase):
         os.system(f"sudo ip link set dev {wlan} down")
         return
 
-    def _open_application(self, appName: str):
+    def _open_application(self, appName: str, url: str = ""):
         pyautogui.click(10, 15, duration=0.3)  # 選單
         pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
         pyautogui.typewrite(appName)  # 開啟 chrome
         pyautogui.press('enter')
         time.sleep(1)  # 等待開啟
+
+        if appName == "Google Chrome" and url != "":
+            pyautogui.click(172, 96, duration=0.2)  # 網址列
+            pyautogui.typewrite(url)
+            pyautogui.press('enter')
+            time.sleep(2) # 等待網頁載入
         return 
 
     def watch_predefined_youtube_videos(self, playTime: int):
@@ -51,13 +57,8 @@ class MsiM16Controller(ControllerBase):
         # 隨機選擇要瀏覽的影片
         random_index = random.randint(0, len(youtube_video_list)-1)
 
-        self._open_application("Google Chrome")
-        pyautogui.click(172, 96, duration=0.2)  # 網址列
-        pyautogui.typewrite(youtube_video_list[random_index])
-        pyautogui.press('enter')
-        time.sleep(2)
+        self._open_application("Google Chrome", youtube_video_list[random_index])
         time.sleep(playTime)
-
         self._clean_up
         return
 
@@ -71,13 +72,8 @@ class MsiM16Controller(ControllerBase):
         # 隨機選擇要下載 nodejs or python
         random_index = random.randint(0, len(web_download_list)-1)
 
-        self._open_application("Google Chrome")
-        pyautogui.click(172, 96, duration=0.2)  # 網址列
-        pyautogui.typewrite(web_download_list[random_index])
-        pyautogui.press('enter')
-        time.sleep(2)
+        self._open_application("Google Chrome", web_download_list[random_index])
         time.sleep(25) # 等待下載
-
         self._clean_up()
         time.sleep(0.3)
         pyautogui.click(1126, 233, duration=0.2) # 未下載完須點選結束
@@ -91,12 +87,7 @@ class MsiM16Controller(ControllerBase):
             file = json.load(f)
             spotify_url = file["spotify_url"]
         
-        self._open_application("Google Chrome")
-        pyautogui.click(172, 96, duration=0.2)  # 網址列
-        pyautogui.typewrite(f"{spotify_url}/playlist/{playlistCode}")
-        pyautogui.press('enter')
-        time.sleep(2)
-
+        self._open_application("Google Chrome", f"{spotify_url}/playlist/{playlistCode}")
         pyautogui.click(485, 531, duration=0.3)  # 播放
         time.sleep(playTime)
         pyautogui.click(485, 531)  # 停止
@@ -104,6 +95,18 @@ class MsiM16Controller(ControllerBase):
         return
 
     def join_google_meet(self):
+        googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
+        with open("url_list.json", "r") as f:
+            file = json.load(f)
+            googleMeetUrl = file["google_meet_url"]
+        self._open_application("Google Chrome", googleMeetUrl)
+        pyautogui.click(350, 771, duration=0.3) # 會議代碼
+        pyautogui.typewrite(googleMeetRoom)
+        
+        pyautogui.click(602, 768, duration=0.1) # 加入
+        time.sleep(20)
+        pyautogui.click(1145, 1163, duration=0.3) # 退出通話
+        self._clean_up()
         return
 
     def send_gmail(self):

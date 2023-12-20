@@ -83,6 +83,31 @@ def test_spotify():
     pyautogui.hotkey('alt', 'F4')  # 關閉視窗
     return
 
+def test_meet():
+    googleMeetRoom = os.environ.get("GOOGLE_MEET_ROOM")
+    with open("url_list.json", "r") as f:
+        file = json.load(f)
+        googleMeetUrl = file["google_meet_url"]
+
+    pyautogui.click(10, 15, duration=0.3)  # 選單
+    pyautogui.click(84, 53, duration=0.2)  # 選單搜尋
+    pyautogui.typewrite("Google Chrome")  # 開啟 chrome
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    pyautogui.click(172, 96, duration=0.2)  # 網址列
+    pyautogui.typewrite(googleMeetUrl)
+    pyautogui.press('enter')
+    time.sleep(2)
+    
+    pyautogui.click(350, 771, duration=0.3) # 會議代碼
+    pyautogui.typewrite(googleMeetRoom)
+    
+    pyautogui.click(602, 768, duration=0.1) # 加入
+    time.sleep(20)
+    pyautogui.click(1145, 1163, duration=0.3) # 退出通話
+    return 
+    
 def main():
     test_spotify()
 
