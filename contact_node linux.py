@@ -172,12 +172,12 @@ class ContactNode:
     def __init__(self, deviceName: str):
         self.logger = Logger('WPA3Dataset', 'contact_node')
         self.server_host = os.environ.get("CENTER_HOST")
-        self.server_port = os.environ.get("CENTER_PORT")
+        self.server_port = int(os.environ.get("CENTER_PORT"))
         self.device = deviceName
 
         if deviceName == 'MSIM16':
             self.host = os.environ.get("MSI_HOST")
-            self.port = os.environ.get("MSI_PORT")
+            self.port = int(os.environ.get("MSI_PORT"))
             self.controller = MsiM16Controller()
 
         self.wifi_reopen_flag = False
@@ -209,7 +209,7 @@ class ContactNode:
             s.close()
 
     # 處理請求 func.
-    def receive_socket_message(self, s: socket.socket, connection: socket.socket, address: socket._RetAddress):
+    def receive_socket_message(self, s: socket.socket, connection: socket.socket, address):
         with connection:
             message = connection.recv(1024)  # 接收 msg
             try:
@@ -258,5 +258,5 @@ class ContactNode:
 
 if __name__ == "__main__":
     logger = Logger('WPA3DataSet', 'main')
-    deviceName = ""
+    deviceName = "MSIM16"
     ContactNode(deviceName).run()
