@@ -1,5 +1,3 @@
-from cellphone import SamsungS20FEController
-from cellphone import OppoReno7Controller
 from base import Logger
 from dotenv import load_dotenv
 from time import localtime
@@ -86,33 +84,10 @@ class ContactServer:
     def run(self):
         start_hour = int(os.environ.get('START_HOUR'))
         start_minute = int(os.environ.get('START_MINUTE'))
-        # 時間到開始
-        while True:
-            if localtime().tm_hour == start_hour and localtime().tm_min == start_minute:
-                self.logger.logMsg('Init finish !')
-            elif localtime().tm_hour == start_hour and localtime().tm_min == (start_minute + 2):
-                self.logger.logMsg('Call device do scenario !')
-                break
-
-        # 宣告手機裝置的 controller
-        samsungS20FE = SamsungS20FEController()
-        oppoReno7 = OppoReno7Controller()
 
         # 依裝置順序執行正常流量場景
         self.logger.logMsg('Choose scenario !')
-        # samsung cellphone
-        scenario_value = self.get_random_scenario()
-        act_samsung_scenario = threading.Thread(target=samsungS20FE.process_scenario,
-                                                args=(scenario_value,))
-        act_samsung_scenario.start()
-        # oppo cellphone
-        scenario_value = self.get_random_scenario()
-        act_oppo_scenario = threading.Thread(target=oppoReno7.process_scenario,
-                                             args=(scenario_value,))
-        act_oppo_scenario.start()
-        # iphone cellphone (manual)
-        scenario_value = self.get_random_scenario()
-        self.logger.logMsg(f"IPhone do scenario {scenario_value}")
+
         # acer laptop
         scenario_value = self.get_random_scenario()
         conn_acer_scenario = threading.Thread(target=self.connect_to_client,
@@ -136,20 +111,9 @@ class ContactServer:
         conn_acer_scenario.join()
         conn_asus_scenario.join()
         conn_msi_scenario.join()
-        act_samsung_scenario.join()
-        act_oppo_scenario.join()
 
         # 攻擊階段開始
         # 通知 attacker
-
-        # 裝置依序 reable wifi
-        samsungS20FE.disable_wifi()
-        samsungS20FE.enable_wifi()
-
-        oppoReno7.disable_wifi()
-        oppoReno7.enable_wifi()
-
-        self.logger.logMsg(f"IPhone attack start ! (disable & enable wifi)")
 
         conn_acer_attack = threading.Thread(target=self.connect_to_client,
                                             args=(self.acer_host, self.acer_port, 'attack_start',))
