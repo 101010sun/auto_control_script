@@ -82,8 +82,6 @@ class ContactServer:
         return value
 
     def run(self):
-        start_hour = int(os.environ.get('START_HOUR'))
-        start_minute = int(os.environ.get('START_MINUTE'))
 
         # 依裝置順序執行正常流量場景
         self.logger.logMsg('Choose scenario !')
@@ -93,24 +91,12 @@ class ContactServer:
         conn_acer_scenario = threading.Thread(target=self.connect_to_client,
                                               args=(self.acer_host, self.acer_port, 'normal_flow', scenario_value,))
         conn_acer_scenario.start()
-        # asus laptop
-        scenario_value = self.get_random_scenario()
-        conn_asus_scenario = threading.Thread(target=self.connect_to_client,
-                                              args=(self.asus_host, self.asus_port, 'normal_flow', scenario_value,))
-        conn_asus_scenario.start()
-        # msi laptop
-        scenario_value = self.get_random_scenario()
-        conn_msi_scenario = threading.Thread(target=self.connect_to_client,
-                                             args=(self.msi_host, self.msi_port, 'normal_flow', scenario_value,))
-        conn_msi_scenario.start()
 
         # 等待場景都執行完成
         t = threading.Thread(target=self.wait_for_socket_connection)  # 開始監聽
         t.start()
         t.join()
         conn_acer_scenario.join()
-        conn_asus_scenario.join()
-        conn_msi_scenario.join()
 
         # 攻擊階段開始
         # 通知 attacker
@@ -118,14 +104,6 @@ class ContactServer:
         conn_acer_attack = threading.Thread(target=self.connect_to_client,
                                             args=(self.acer_host, self.acer_port, 'attack_start',))
         conn_acer_attack.start()
-
-        conn_asus_attack = threading.Thread(target=self.connect_to_client,
-                                            args=(self.asus_host, self.asus_port, 'attack_start',))
-        conn_asus_attack.start()
-
-        conn_msi_attack = threading.Thread(target=self.connect_to_client,
-                                           args=(self.msi_host, self.msi_port, 'attack_start',))
-        conn_msi_attack.start()
         return
 
 
