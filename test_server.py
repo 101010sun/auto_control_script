@@ -16,10 +16,10 @@ class ContactServer:
     def __init__(self):
         self.logger = Logger('WPA3Dataset', 'contact_server')
         self.host = os.environ.get("CENTER_HOST")
-        self.port = os.environ.get("CENTER_PORT")
+        self.port = int(os.environ.get("CENTER_PORT"))
 
         self.acer_host = os.environ.get("ACER_HOST")
-        self.acer_port = os.environ.get("ACER_PORT")
+        self.acer_port = int(os.environ.get("ACER_PORT"))
 
         self.asus_host = os.environ.get("ASUS_HOST")
         self.asus_port = os.environ.get("ASUS_PORT")
@@ -59,7 +59,7 @@ class ContactServer:
             s.close()
 
     # 處理請求 func.
-    def receive_socket_message(self, s: socket.socket, connection: socket.socket, address: socket._RetAddress):
+    def receive_socket_message(self, s: socket.socket, connection: socket.socket, address):
         with connection:
             message = connection.recv(1024)  # 接收 msg
             try:

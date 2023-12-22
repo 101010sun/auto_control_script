@@ -1,0 +1,3 @@
+[2023-12-21 16:15:32,177]: Choose scenario ! (contact_server.py)
+[2023-12-21 16:17:55,922]: Choose scenario ! (contact_server.py)
+[2023-12-21 16:17:55,969]: Received: {'device': 'AcerT9300', 'msg': 'scenario_done'} (contact_server.py)
