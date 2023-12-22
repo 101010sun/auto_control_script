@@ -48,31 +48,32 @@ class AcerT9300Controller(WindowsController):
         return super().view_specific_webpages(playTime)
 
     def start_skype_call(self, playTime: int):
-        skypeLink = self._get_json_data("skype_url")
+        with auto.UIAutomationInitializerInThread(debug=True):
+            skypeLink = self._get_json_data("skype_url")
 
-        subprocess.Popen(
-            'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
-        time.sleep(2)
-        chromeWindow = auto.PaneControl(
-            searchDepth=1, ClassName="Chrome_WidgetWin_1")
-        chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(
-            skypeLink + '{Enter}')
-        time.sleep(5)
-        chromeWindow.ButtonControl(searchDepth=7, Name="取消").Click()
-        chromeWindow.ButtonControl(searchDepth=8, Name="以來賓身分加入").Click()
-        time.sleep(7)
-        chromeWindow.EditControl(
-            searchDepth=11, Name="輸入您的名稱").SendKeys('acerT9300_tester')
-        time.sleep(1)
+            subprocess.Popen(
+                'C:\Program Files\Google\Chrome\Application\chrome.exe')  # 執行 Chrome
+            time.sleep(2)
+            chromeWindow = auto.PaneControl(
+                searchDepth=1, ClassName="Chrome_WidgetWin_1")
+            chromeWindow.EditControl(searchDepth=9, Name="網址與搜尋列").SendKeys(
+                skypeLink + '{Enter}')
+            time.sleep(5)
+            chromeWindow.ButtonControl(searchDepth=7, Name="取消").Click()
+            chromeWindow.ButtonControl(searchDepth=8, Name="以來賓身分加入").Click()
+            time.sleep(7)
+            chromeWindow.EditControl(
+                searchDepth=11, Name="輸入您的名稱").SendKeys('acerT9300_tester')
+            time.sleep(1)
 
-        if chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Exists():
-            chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Click()
-        else:
-            chromeWindow.ButtonControl(searchDepth=11, Name="加入通話").Click()
+            if chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Exists():
+                chromeWindow.ButtonControl(searchDepth=13, Name="開始通話").Click()
+            else:
+                chromeWindow.ButtonControl(searchDepth=11, Name="加入通話").Click()
 
-        time.sleep(2)
-        time.sleep(playTime)
-        self._clean_up(chromeWindow)
+            time.sleep(2)
+            time.sleep(playTime)
+            self._clean_up(chromeWindow)
         return
 
     def upload_google_drive_file(self, waitTime: int):
