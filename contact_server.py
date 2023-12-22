@@ -95,8 +95,11 @@ class ContactServer:
                 break
 
         # 宣告手機裝置的 controller
-        samsungS20FE = SamsungS20FEController()
-        oppoReno7 = OppoReno7Controller()
+        samsung_adb_name = os.environ.get("SAMSUNG_DEVICE_NAME")
+        oppo_adb_name = os.environ.get("OPPO_DEVICE_NAME")
+        
+        samsungS20FE = SamsungS20FEController(samsung_adb_name)
+        oppoReno7 = OppoReno7Controller(oppo_adb_name)
 
         # 依裝置順序執行正常流量場景
         self.logger.logMsg('Choose scenario !')

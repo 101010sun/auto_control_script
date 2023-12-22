@@ -1,18 +1,23 @@
+from dotenv import load_dotenv
 from cellphone import SamsungS20FEController, OppoReno7Controller
 from computer import AcerT9300Controller
 from computer import AsusA550VController
 from computer import MsiM16Controller
 from base.logger import Logger
+import os
 
+# 載入環境變數
+load_dotenv()
 
 def samsungS20FE(scenario: int):
-    controller = SamsungS20FEController()
+    samsung = os.environ.get("SAMSUNG_DEVICE_NAME")
+    controller = SamsungS20FEController(samsung)
     controller.enable_wifi()
 
     if scenario == 1:
         controller.watch_predefined_youtube_videos(5)
     elif scenario == 2:
-        controller.download_web_file()
+        controller.download_web_file(10)
     elif scenario == 3:
         controller.play_spotify_music(60)
     elif scenario == 4:
@@ -22,9 +27,9 @@ def samsungS20FE(scenario: int):
     elif scenario == 6:
         controller.view_specific_webpages(5)
     elif scenario == 7:
-        controller.upload_google_drive_file()
+        controller.upload_google_drive_file(10)
     elif scenario == 8:
-        controller.download_google_drive_file()
+        controller.download_google_drive_file(10)
     elif scenario == 9:
         controller.start_skype_call(30)
 
@@ -33,13 +38,14 @@ def samsungS20FE(scenario: int):
 
 
 def oppoReno7(scenario: int):
-    controller = OppoReno7Controller()
+    oppo = os.environ.get("OPPO_DEVICE_NAME")
+    controller = OppoReno7Controller(oppo)
     controller.enable_wifi()
 
     if scenario == 1:
         controller.watch_predefined_youtube_videos(5)
     elif scenario == 2:
-        controller.download_web_file()
+        controller.download_web_file(10)
     elif scenario == 3:
         controller.play_spotify_music(10)
     elif scenario == 4:
@@ -49,9 +55,9 @@ def oppoReno7(scenario: int):
     elif scenario == 6:
         controller.view_specific_webpages(5)
     elif scenario == 7:
-        controller.upload_google_drive_file()
+        controller.upload_google_drive_file(10)
     elif scenario == 8:
-        controller.download_google_drive_file()
+        controller.download_google_drive_file(10)
     elif scenario == 9:
         controller.start_skype_call(30)
 
@@ -164,8 +170,8 @@ def main():
     # asusA550v(value)
     # scenario_list.remove(value)
 
-    msiM16(1)
-
+    oppoReno7(6)
+    samsungS20FE(6)
 
 if __name__ == "__main__":
     logger = Logger('WPA3DataSet', 'main')
