@@ -15,13 +15,13 @@ def samsungS20FE(scenario: int):
     controller.enable_wifi()
 
     if scenario == 1:
-        controller.watch_predefined_youtube_videos(5)
+        controller.watch_predefined_youtube_videos(30)
     elif scenario == 2:
         controller.download_web_file(10)
     elif scenario == 3:
         controller.play_spotify_music(60)
     elif scenario == 4:
-        controller.join_google_meet(3)
+        controller.join_google_meet(30)
     elif scenario == 5:
         controller.send_gmail()
     elif scenario == 6:
@@ -170,8 +170,8 @@ def main():
     # asusA550v(value)
     # scenario_list.remove(value)
 
-    oppoReno7(9)
-    # samsungS20FE(9)
+    # oppoReno7(9)
+    samsungS20FE(9)
 
 if __name__ == "__main__":
     logger = Logger('WPA3DataSet', 'main')

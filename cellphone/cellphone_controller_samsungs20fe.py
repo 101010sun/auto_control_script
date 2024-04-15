@@ -125,14 +125,14 @@ class SamsungS20FEController(AndroidCellphoneController):
 
     def download_google_drive_file(self, waitTime: int):
         self._adb_shell_command(f"am start -n com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity")
-        time.sleep(1)
-        self._adb_shell_command(f"input tap 946 2117")  # 點擊檔案
+        time.sleep(2)
+        self._adb_shell_command(f"input tap 941 2110")  # 點擊檔案
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 251 592")  # 點擊第一個資料夾
+        self._adb_shell_command(f"input tap 236 825")  # 點擊第一個資料夾
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 957 590")  # 點擊第一個文件的選項
+        self._adb_shell_command(f"input tap 462 864")  # 點擊第一個文件的選項
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 268 2160")
+        self._adb_shell_command(f"input tap 569 2159")
         time.sleep(waitTime)  # 等待下載
         self._clean_up()
         return
