@@ -128,11 +128,11 @@ class SamsungS20FEController(AndroidCellphoneController):
         time.sleep(1)
         self._adb_shell_command(f"input tap 946 2117")  # 點擊檔案
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 350 723")  # 點擊第一個資料夾
+        self._adb_shell_command(f"input tap 251 592")  # 點擊第一個資料夾
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 995 590")  # 點擊第一個文件的選項
+        self._adb_shell_command(f"input tap 957 590")  # 點擊第一個文件的選項
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 300 2187")
+        self._adb_shell_command(f"input tap 268 2160")
         time.sleep(waitTime)  # 等待下載
         self._clean_up()
         return

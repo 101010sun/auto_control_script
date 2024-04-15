@@ -31,7 +31,7 @@ def samsungS20FE(scenario: int):
     elif scenario == 8:
         controller.download_google_drive_file(10)
     elif scenario == 9:
-        controller.start_skype_call(30)
+        controller.start_skype_call(10)
 
     controller.disable_wifi()
     return
@@ -59,7 +59,7 @@ def oppoReno7(scenario: int):
     elif scenario == 8:
         controller.download_google_drive_file(10)
     elif scenario == 9:
-        controller.start_skype_call(30)
+        controller.start_skype_call(10)
 
     controller.disable_wifi()
     return
@@ -170,8 +170,8 @@ def main():
     # asusA550v(value)
     # scenario_list.remove(value)
 
-    oppoReno7(6)
-    samsungS20FE(6)
+    oppoReno7(9)
+    # samsungS20FE(9)
 
 if __name__ == "__main__":
     logger = Logger('WPA3DataSet', 'main')

@@ -8,6 +8,7 @@ import threading
 import os
 import pickle
 import random
+import time
 
 # 載入環境變數
 load_dotenv()
@@ -54,11 +55,12 @@ class ContactServer:
                 client_handler = threading.Thread(
                     target=self.receive_socket_message, args=(s, conn, address))  # 處理收到的請求
                 client_handler.start()
-                if not client_handler.is_alive():
-                    client_handler.join()
-                    break
-            s.shutdown(2)
+                client_handler.join()
+                print("break")
+                break
+
             s.close()
+            return
 
     # 處理請求 func.
     def receive_socket_message(self, s: socket.socket, connection: socket.socket, address):
@@ -72,10 +74,14 @@ class ContactServer:
 
             if message:
                 if parsed_msg['msg'] == "scenario_done":
-                    self.done_device_counter += 1
+                    self.done_device_counter = self.done_device_counter + 1
                     if self.done_device_counter >= 3:
+                        self.logger.logMsg("socket_device counter = 3 !")
                         connection.shutdown(2)
                         connection.close()  # 關閉 socket 連線
+                        return
+                    else:
+                        print('')
 
     def get_random_scenario(self):
         random_index = random.randint(0, len(self.scenario_list)-1)
@@ -84,16 +90,6 @@ class ContactServer:
         return value
 
     def run(self):
-        start_hour = int(os.environ.get('START_HOUR'))
-        start_minute = int(os.environ.get('START_MINUTE'))
-        # 時間到開始
-        while True:
-            if localtime().tm_hour == start_hour and localtime().tm_min == start_minute:
-                self.logger.logMsg('Init finish !')
-            elif localtime().tm_hour == start_hour and localtime().tm_min == (start_minute + 2):
-                self.logger.logMsg('Call device do scenario !')
-                break
-
         # 宣告手機裝置的 controller
         samsung_adb_name = os.environ.get("SAMSUNG_DEVICE_NAME")
         oppo_adb_name = os.environ.get("OPPO_DEVICE_NAME")
@@ -101,7 +97,25 @@ class ContactServer:
         samsungS20FE = SamsungS20FEController(samsung_adb_name)
         oppoReno7 = OppoReno7Controller(oppo_adb_name)
 
+        start_hour = int(os.environ.get('START_HOUR'))
+        start_minute = int(os.environ.get('START_MINUTE'))
+        # 時間到開始
+        flag = False
+        while True:
+            if localtime().tm_hour == start_hour and localtime().tm_min == start_minute:
+                if not flag:
+                    self.logger.logMsg(f'---------- START NEW COLLECTED PROCESS ----------')
+                    self.logger.logMsg(f'Start attack: {os.environ.get("ATT")}, epoch time: {time.time()}')
+                    samsungS20FE.enable_wifi()
+                    oppoReno7.enable_wifi()
+                    flag = True
+                    break
+                    
+        self.logger.logMsg('All device connected to wifi init finish!')
+        continue_input = input("Press enter to continue when all device opened and connected to the wifi:")
+        
         # 依裝置順序執行正常流量場景
+        self.logger.logMsg(f'Call device do scenario ! epoch time: {time.time()}')
         self.logger.logMsg('Choose scenario !')
         # samsung cellphone
         scenario_value = self.get_random_scenario()
@@ -133,38 +147,15 @@ class ContactServer:
         conn_msi_scenario.start()
 
         # 等待場景都執行完成
-        t = threading.Thread(target=self.wait_for_socket_connection)  # 開始監聽
-        t.start()
-        t.join()
-        conn_acer_scenario.join()
-        conn_asus_scenario.join()
-        conn_msi_scenario.join()
-        act_samsung_scenario.join()
-        act_oppo_scenario.join()
+        continue_input = input("Press enter to continue when all device finished scenario action:")
 
         # 攻擊階段開始
         # 通知 attacker
-
-        # 裝置依序 reable wifi
+        self.logger.logMsg(f"Init attack, close all device wifi ! epoch time: {time.time()}")
+        time.sleep(20)
         samsungS20FE.disable_wifi()
-        samsungS20FE.enable_wifi()
-
         oppoReno7.disable_wifi()
-        oppoReno7.enable_wifi()
-
-        self.logger.logMsg(f"IPhone attack start ! (disable & enable wifi)")
-
-        conn_acer_attack = threading.Thread(target=self.connect_to_client,
-                                            args=(self.acer_host, self.acer_port, 'attack_start',))
-        conn_acer_attack.start()
-
-        conn_asus_attack = threading.Thread(target=self.connect_to_client,
-                                            args=(self.asus_host, self.asus_port, 'attack_start',))
-        conn_asus_attack.start()
-
-        conn_msi_attack = threading.Thread(target=self.connect_to_client,
-                                           args=(self.msi_host, self.msi_port, 'attack_start',))
-        conn_msi_attack.start()
+        self.logger.logMsg(f"Attack start, epoch time: {time.time()}")
         return
 
 

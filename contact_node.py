@@ -78,15 +78,15 @@ class ContactNode:
                 if parsed_msg['msg'] == "normal_flow":
                     scenario = int(parsed_msg['scenario'])
                     self.controller.process_scenario(scenario)  # 執行正常流量場景
-                    con_center_done = threading.Thread(target=self.connect_to_server,
-                                                       args=('scenario_done',))
-                    con_center_done.start()
-                    con_center_done.join()  # 等待執行結束
-                # 攻擊開始
-                elif parsed_msg['msg'] == "attack_start":
-                    self.wifi_reopen_flag = True
+                    # con_center_done = threading.Thread(target=self.connect_to_server,
+                    #                                    args=('scenario_done',))
+                    # con_center_done.start()
+                    # con_center_done.join()  # 等待執行結束
+                    self.logger.logMsg(f"Scenario done !")
                     connection.shutdown(2)
                     connection.close()  # 關閉 socket 連線
+                    input = ("Enter to close wifi !")
+                    self.wifi_reopen_flag = True
 
         # 必須先關閉 socket 連線裝置才能執行裝置 wifi 相關動作
         if self.wifi_reopen_flag:

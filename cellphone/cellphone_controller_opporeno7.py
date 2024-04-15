@@ -144,7 +144,7 @@ class OppoReno7Controller(AndroidCellphoneController):
         time.sleep(0.5)
         self._adb_shell_command(f"input tap 972 645")  # 點擊第一個文件的選項
         time.sleep(0.5)
-        self._adb_shell_command(f"input tap 305 2173")
+        self._adb_shell_command(f"input tap 255 2034")
         time.sleep(waitTime)  # 等待下載
         self._clean_up()
         return
