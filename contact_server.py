@@ -147,14 +147,15 @@ class ContactServer:
         conn_msi_scenario.start()
 
         # 等待場景都執行完成
+        act_samsung_scenario.join()
+        act_oppo_scenario.join()
+        samsungS20FE.disable_wifi()
+        oppoReno7.disable_wifi()
         continue_input = input("Press enter to continue when all device finished scenario action:")
-
         # 攻擊階段開始
         # 通知 attacker
         self.logger.logMsg(f"Init attack, close all device wifi ! epoch time: {time.time()}")
         time.sleep(20)
-        samsungS20FE.disable_wifi()
-        oppoReno7.disable_wifi()
         self.logger.logMsg(f"Attack start, epoch time: {time.time()}")
         return
 
